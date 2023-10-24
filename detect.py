@@ -1,3 +1,9 @@
+import subprocess
+# Sử dụng subprocess để thực thi lệnh pip install
+try:
+    subprocess.check_call(['pip', 'install', 'torch'])
+except subprocess.CalledProcessError as e:
+    print(f"Lỗi: {e}")
 import torch
 import argparse
 import csv
