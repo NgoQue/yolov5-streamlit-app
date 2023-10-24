@@ -101,10 +101,11 @@ if st.button("Run YOLOv5 Detection"):
     st.image(int_image_path)
     path_detect_py = 'yolov5/detect.py'
     iou = '0.1'
+    out_path = 'yolov5/runs/detect'
     path_weight = "yolov5/runs/train/exp/weights/best.pt"
     command = ["python", path_detect_py,
                "--source", int_image_path,
-               "--save-txt",
+               "--save-txt", out_path,
                "--weights", path_weight,
                "--iou-thres", iou]
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
