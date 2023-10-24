@@ -111,7 +111,7 @@ if st.button("Run YOLOv5 Detection"):
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     # time.sleep(7)
     process.wait()
-    
+    stdout, stderr = process.communicate()
     if process.returncode == 0:
         st.write("Quá trình chạy thành công.")
         st.write("Standard Output:")
