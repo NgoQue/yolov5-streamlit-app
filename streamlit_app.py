@@ -110,7 +110,13 @@ if st.button("Run YOLOv5 Detection"):
                "--project", out_path]
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     time.sleep(7)
-    st.write(os.path.join(out_path, uploaded_file.name ))
+    
+    stdout, stderr = process.communicate()
+# In đầu ra hoặc làm gì đó với nó
+    st.write("Standard Output:")
+    st.write(stdout.decode("utf-8"))  # Đọc đầu ra chuẩn và giải mã nó từ bytes sang chuỗi
+    st.write("Standard Error:")
+    st.write(stderr.decode("utf-8"))
 
     # image_path = os.path.join("detect/exp", uploaded_file.name)
     image_path = os.path.join("detect")
