@@ -25,7 +25,9 @@ if uploaded_file is not None:
         image = image.resize((new_width, 640))
         image = image.save(f'images/{uploaded_file.name}')
         # int_image_path = f'images/{uploaded_file.name}'
-
+else:
+    st.error("Please upload a file")
+    
 number = st.sidebar.number_input('Enter the value of scale bar into the box below.')
 st.sidebar.write('The current number is ', number)
  #-----------------------funtions-------------------------#
