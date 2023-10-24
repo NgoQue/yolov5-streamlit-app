@@ -16,6 +16,7 @@ if not os.path.exists(folder):
 folder_detect = os.path.join('detect')
 if not os.path.exists(folder_detect):
     os.makedirs(folder_detect)
+    st.write(folder_detect)
 
 uploaded_file = st.sidebar.file_uploader(
     "Upload your image file ", type=['png', 'jpeg', 'jpg'])
