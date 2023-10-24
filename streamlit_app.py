@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import time
 import argparse
+from yolov5 import detect
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
