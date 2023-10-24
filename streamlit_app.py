@@ -112,7 +112,8 @@ if st.button("Run YOLOv5 Detection"):
     time.sleep(7)
     st.write(os.path.join(out_path, uploaded_file.name ))
 
-    image_path = os.path.join("detect/exp", uploaded_file.name)
+    # image_path = os.path.join("detect/exp", uploaded_file.name)
+    image_path = os.path.join("detect")
     if os.path.exists(image_path):
         st.image(image_path)
     else:
