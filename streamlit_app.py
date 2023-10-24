@@ -108,7 +108,7 @@ if st.button("Run YOLOv5 Detection"):
                "--weights", path_weight,
                "--iou-thres", iou]
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    st.write("stdout")
+    st.write(stdout)
     time.sleep(7)
 
 # if st.button("Run YOLOv5 Detection"):
