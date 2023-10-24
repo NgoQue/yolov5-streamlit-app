@@ -126,8 +126,8 @@ if st.button("Run YOLOv5 Detection"):
                             help='save results to project/name')
     opt = parser.parse_args()
     st.write(opt)
-    # time.sleep(7)
-    process.wait()
+    time.sleep(7)
+    # process.wait()
 
     # image_path = os.path.join("detect/exp", uploaded_file.name)
     image_path = os.path.join("detect")
