@@ -108,7 +108,7 @@ if st.button("Run YOLOv5 Detection"):
                "--iou-thres", iou]
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     time.sleep(7)
-'''
+    '''
 # if st.button("Run YOLOv5 Detection"):
     for root, dirs, files in os.walk(get_detection_folder()):
         path_detect = root
@@ -121,7 +121,7 @@ if st.button("Run YOLOv5 Detection"):
             if (file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg')):
                 namefile_img = os.path.join(root, file)
                 st.image(namefile_img, caption='Image detected')
-'''
+    '''
     for root, dirs, files in os.walk(get_detection_folder()):
         for file in files:
             if file.endswith('.txt'):
