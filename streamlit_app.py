@@ -108,6 +108,7 @@ if st.button("Run YOLOv5 Detection"):
                "--iou-thres", iou]
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     time.sleep(7)
+'''
 # if st.button("Run YOLOv5 Detection"):
     for root, dirs, files in os.walk(get_detection_folder()):
         path_detect = root
@@ -120,7 +121,22 @@ if st.button("Run YOLOv5 Detection"):
             if (file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg')):
                 namefile_img = os.path.join(root, file)
                 st.image(namefile_img, caption='Image detected')
-
+'''
+    for root, dirs, files in os.walk(get_detection_folder()):
+        for file in files:
+            if file.endswith('.txt'):
+                namefile_txt = os.path.join(root, file)
+                # Copy txt files to the txt_results folder
+                shutil.copy(namefile_txt, os.path.join(txt_folder, file))
+                detect_diameter(namefile_txt, number)
+                st.write("Diameter core is:", D_core)
+                st.write("Diameter shell is:", D_shell)
+            elif file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg'):
+                namefile_img = os.path.join(root, file)
+                # Copy image files to the images folder
+                shutil.copy(namefile_img, os.path.join(image_folder, file))
+                st.image(namefile_img, caption='Image detected')
+                
     col1, col2 = st.columns([3, 1])
     with col1:
         # Tạo biểu đồ histogram core
