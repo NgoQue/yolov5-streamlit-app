@@ -109,10 +109,10 @@ if st.button("Run YOLOv5 Detection"):
                "--iou-thres", iou,
                "--project", out_path]
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    time.sleep(7)
+    # time.sleep(7)
+    process.wait()
     
     stdout, stderr = process.communicate()
-# In đầu ra hoặc làm gì đó với nó
     st.write("Standard Output:")
     st.write(stdout.decode("utf-8"))  # Đọc đầu ra chuẩn và giải mã nó từ bytes sang chuỗi
     st.write("Standard Error:")
