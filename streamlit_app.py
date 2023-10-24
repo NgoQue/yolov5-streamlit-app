@@ -112,7 +112,7 @@ if st.button("Run YOLOv5 Detection"):
     time.sleep(7)
     st.write(os.path.join(out_path, uploaded_file.name ))
 
-    image_path = os.path.join(out_path, uploaded_file.name)
+    image_path = os.path.join("detect/exp", uploaded_file.name)
     if os.path.exists(image_path):
         st.image(image_path)
     else:
@@ -160,6 +160,6 @@ if st.button("Run YOLOv5 Detection"):
     # Xóa tệp hình ảnh tạm thời
     os.remove(int_image_path)
     time.sleep(7)
-    # shutil.rmtree('detect')
+    shutil.rmtree('detect')
 
 
