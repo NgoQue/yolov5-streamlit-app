@@ -8,7 +8,7 @@ import shutil
 import subprocess
 import time
 import argparse
-from yolov5 import detect
+from yolov5.detect import detect
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
@@ -126,6 +126,7 @@ if st.button("Run YOLOv5 Detection"):
         parser.add_argument('--project', default='detect',
                             help='save results to project/name')
     opt = parser.parse_args()
+    detect(opt)
     st.write(opt)
     time.sleep(7)
     # process.wait()
