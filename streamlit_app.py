@@ -111,7 +111,12 @@ if st.button("Run YOLOv5 Detection"):
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     time.sleep(7)
     st.write(os.path.join(out_path, uploaded_file.name ))
-    st.image(os.path.join(out_path, uploaded_file.name ))
+
+    image_path = os.path.join(out_path, uploaded_file.name)
+    if os.path.exists(image_path):
+        st.image(image_path)
+    else:
+        st.write("Không tìm thấy tệp hình ảnh.")
 
     for root, dirs, files in os.walk(get_detection_folder()):
         for file in files:
