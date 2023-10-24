@@ -14,7 +14,7 @@ folder = os.path.join('images')
 if not os.path.exists(folder):
     os.makedirs(folder)
 
-folder_detect = os.path.join('detect')
+folder_detect = os.path.join('yolov5/runs/detect')
 if not os.path.exists(folder_detect):
     os.makedirs(folder_detect)
 
@@ -102,7 +102,7 @@ if st.button("Run YOLOv5 Detection"):
     # path_detect_py = 'yolov5/detect.py'
     path_detect_py = 'detect.py'
     iou = '0.1'
-    out_path = 'detect'
+    out_path = 'yolov5/runs/detect'
     path_weight = "yolov5/runs/train/exp/weights/best.pt"
     command = ["python", path_detect_py,
                "--source", int_image_path,
@@ -166,6 +166,6 @@ if st.button("Run YOLOv5 Detection"):
     # Xóa tệp hình ảnh tạm thời
     os.remove(int_image_path)
     time.sleep(7)
-    shutil.rmtree('detect')
+    # shutil.rmtree('yolov5/runs/detect')
 
 
