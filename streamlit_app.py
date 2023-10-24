@@ -119,9 +119,11 @@ if st.button("Run YOLOv5 Detection"):
                 detect_diameter(namefile_txt, number)
                 st.write("Diameter core is:", D_core)
                 st.write("Diameter core is:", D_shell)
+                st.write(namefile_txt)
             if (file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg')):
                 namefile_img = os.path.join(root, file)
                 st.image(namefile_img, caption='Image detected')
+                st.namefile(namefile_img)
                 
     col1, col2 = st.columns([3, 1])
     with col1:
