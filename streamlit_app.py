@@ -93,9 +93,9 @@ def detect_diameter(namefile_txt, num_values):
 st.title('YOLOv5 Streamlit App')
 if st.button("Run YOLOv5 Detection"):
     int_image_path = f'images/{uploaded_file.name}'
-    path_detect_py = 'yolov5/detect.py'
+    path_detect_py = 'detect.py'
     iou = '0.1'
-    path_weight = "yolov5/runs/train/exp/weights/best.pt"
+    path_weight = "runs/train/exp/weights/best.pt"
     command = ["python", path_detect_py,
                "--source", int_image_path,
                "--save-txt",
