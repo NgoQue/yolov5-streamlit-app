@@ -112,7 +112,7 @@ if st.button("Run YOLOv5 Detection"):
     time.sleep(7)
 
     # for root, dirs, files in os.walk(get_detection_folder()):
-    for root, dirs, files in os.walk(detect):
+    for root, dirs, files in os.walk(out_path):
         for file in files:
             if file.endswith('.txt'):
                 namefile_txt = os.path.join(root, file)
