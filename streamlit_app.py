@@ -102,6 +102,7 @@ if st.button("Run YOLOv5 Detection"):
     iou = '0.1'
     out_path = 'detect'
     path_weight = "yolov5/runs/train/exp/weights/best.pt"
+    '''
     command = ["python", path_detect_py,
                "--source", int_image_path,
                "--save-txt",
@@ -109,17 +110,23 @@ if st.button("Run YOLOv5 Detection"):
                "--iou-thres", iou,
                "--project", out_path]
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    '''
+    if __name__ == '__main__':
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--weights', nargs='+', type=str,
+                            default=path_weight, help='model.pt path(s)')
+        parser.add_argument('--source', type=str,
+                            default=int_image_path, help='source')
+        parser.add_argument('--iou-thres', type=float,
+                            default=0.1, help='IOU threshold for NMS')
+        parser.add_argument('--save-txt', action='store_true',
+                            help='save results to *.txt')
+        parser.add_argument('--project', default='runs/detect',
+                            help='save results to project/name')
+    opt = parser.parse_args()
+    st.write(opt)
     # time.sleep(7)
     process.wait()
-    stdout, stderr = process.communicate()
-    if process.returncode == 0:
-        st.write("Quá trình chạy thành công.")
-        st.write("Standard Output:")
-        st.write(stdout.decode("utf-8"))  # Đọc đầu ra chuẩn và giải mã nó từ bytes sang chuỗi
-    else:
-        st.write("Quá trình chạy không thành công.")
-        st.write("Standard Error:")
-        st.write(stderr.decode("utf-8"))
 
     # image_path = os.path.join("detect/exp", uploaded_file.name)
     image_path = os.path.join("detect")
