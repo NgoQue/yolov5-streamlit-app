@@ -150,6 +150,6 @@ if st.button("Run YOLOv5 Detection"):
     # Xóa tệp hình ảnh tạm thời
     os.remove(int_image_path)
     time.sleep(7)
-    shutil.rmtree('yolov5/runs/detect')
+    # shutil.rmtree('yolov5/runs/detect')
 
 
