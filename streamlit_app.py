@@ -103,7 +103,6 @@ if st.button("Run YOLOv5 Detection"):
     iou = '0.1'
     out_path = 'detect'
     path_weight = "yolov5/runs/train/exp/weights/best.pt"
-    '''
     command = ["python", path_detect_py,
                "--source", int_image_path,
                "--save-txt",
