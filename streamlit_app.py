@@ -6,7 +6,6 @@ from PIL import Image
 import os
 import shutil
 import subprocess
-import torch 
 import time
 # -------------------------Input------------------------------#
 # make a new folder save image
