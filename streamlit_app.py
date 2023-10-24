@@ -122,7 +122,7 @@ if st.button("Run YOLOv5 Detection"):
                             default=0.1, help='IOU threshold for NMS')
         parser.add_argument('--save-txt', action='store_true',
                             help='save results to *.txt')
-        parser.add_argument('--project', default='runs/detect',
+        parser.add_argument('--project', default='detect',
                             help='save results to project/name')
     opt = parser.parse_args()
     st.write(opt)
