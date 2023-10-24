@@ -109,10 +109,9 @@ if st.button("Run YOLOv5 Detection"):
                "--iou-thres", iou,
                "--project", out_path]
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    # st.write(process)
+    st.write(process)
     time.sleep(7)
 
-# if st.button("Run YOLOv5 Detection"):
     for root, dirs, files in os.walk(get_detection_folder()):
         for file in files:
             if file.endswith('.txt'):
