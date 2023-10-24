@@ -112,11 +112,14 @@ if st.button("Run YOLOv5 Detection"):
     # time.sleep(7)
     process.wait()
     
-    stdout, stderr = process.communicate()
-    st.write("Standard Output:")
-    st.write(stdout.decode("utf-8"))  # Đọc đầu ra chuẩn và giải mã nó từ bytes sang chuỗi
-    st.write("Standard Error:")
-    st.write(stderr.decode("utf-8"))
+    if process.returncode == 0:
+        st.write("Quá trình chạy thành công.")
+        st.write("Standard Output:")
+        st.write(stdout.decode("utf-8"))  # Đọc đầu ra chuẩn và giải mã nó từ bytes sang chuỗi
+    else:
+        st.write("Quá trình chạy không thành công.")
+        st.write("Standard Error:")
+        st.write(stderr.decode("utf-8"))
 
     # image_path = os.path.join("detect/exp", uploaded_file.name)
     image_path = os.path.join("detect")
