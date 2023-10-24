@@ -124,13 +124,6 @@ if st.button("Run YOLOv5 Detection"):
         
     process.wait()
 
-    image_path = os.path.join("detect/exp", uploaded_file.name)
-    image_path = os.path.join("detect")
-    if os.path.exists(image_path):
-        st.image(image_path)
-    else:
-        st.write("Không tìm thấy tệp hình ảnh.")
-
     for root, dirs, files in os.walk(get_detection_folder()):
         for file in files:
             if file.endswith('.txt'):
