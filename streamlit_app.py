@@ -7,6 +7,7 @@ import os
 import shutil
 import subprocess
 import time
+import torch 
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
