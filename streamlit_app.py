@@ -128,7 +128,6 @@ if st.button("Run YOLOv5 Detection"):
         for file in files:
             if file.endswith('.txt'):
                 namefile_txt = os.path.join(root, file)
-                shutil.copy(namefile_txt, os.path.join(temp_dir, file))
                 detect_diameter(namefile_txt, number)
                 st.write("Diameter core is:", D_core)
                 st.write("Diameter core is:", D_shell)
