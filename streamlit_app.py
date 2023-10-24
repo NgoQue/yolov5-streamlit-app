@@ -16,7 +16,6 @@ if not os.path.exists(folder):
 folder_detect = os.path.join('detect')
 if not os.path.exists(folder_detect):
     os.makedirs(folder_detect)
-st.write(folder_detect)
 
 uploaded_file = st.sidebar.file_uploader(
     "Upload your image file ", type=['png', 'jpeg', 'jpg'])
@@ -99,7 +98,6 @@ def detect_diameter(namefile_txt, num_values):
 st.title('YOLOv5 Streamlit App')
 if st.button("Run YOLOv5 Detection"):
     int_image_path = f'images/{uploaded_file.name}'
-    st.image(int_image_path)
     path_detect_py = 'yolov5/detect.py'
     iou = '0.1'
     out_path = 'detect'
@@ -116,7 +114,6 @@ if st.button("Run YOLOv5 Detection"):
 
 # if st.button("Run YOLOv5 Detection"):
     for root, dirs, files in os.walk(get_detection_folder()):
-        path_detect = root
         for file in files:
             if file.endswith('.txt'):
                 namefile_txt = os.path.join(root, file)
