@@ -111,8 +111,8 @@ if st.button("Run YOLOv5 Detection"):
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     time.sleep(7)
 
-    # for root, dirs, files in os.walk(get_detection_folder()):
-    for root, dirs, files in os.walk(out_path):
+    for root, dirs, files in os.walk(get_detection_folder()):
+    # for root, dirs, files in os.walk(out_path):
         for file in files:
             if file.endswith('.txt'):
                 namefile_txt = os.path.join(root, file)
