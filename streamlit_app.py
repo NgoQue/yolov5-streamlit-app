@@ -47,7 +47,7 @@ def get_subdirs(b='.'):
     return result
 #  return newest folder
 def get_detection_folder():
-    return max(get_subdirs(os.path.join('detect')), key=os.path.getmtime)
+    return max(get_subdirs(os.path.join('yolov5/runs/detect')), key=os.path.getmtime)
 
  # caculation diameter
 diameter_core = []
