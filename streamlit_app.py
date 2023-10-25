@@ -162,7 +162,7 @@ if st.button("Run YOLOv5 Detection"):
             data = pd.DataFrame(({"Diameter_core": diameter_core[:]}))
             st.dataframe(data, height=310, width=200)
 
-            st.subheader("/nDiameter shell")
+            st.subheader("/n Diameter shell")
             data = pd.DataFrame(({'Diameter_shell': diameter_shell[:]}))
             st.dataframe(data, height=330, width=200)
 
