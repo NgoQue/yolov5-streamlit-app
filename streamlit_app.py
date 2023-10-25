@@ -109,13 +109,13 @@ if st.button("Run YOLOv5 Detection"):
     stdout, stderr = process.communicate()
     # Kiểm tra kết quả của việc chạy
     if process.returncode == 0:
-        print("Quá trình chạy thành công.")
-        print("Standard Output:")
-        print(stdout.decode("utf-8"))  
+        st.write("Quá trình chạy thành công.")
+        st.write("Standard Output:")
+        st.write(stdout.decode("utf-8"))  
     else:
-        print("Quá trình chạy không thành công.")
-        print("Standard Error:")
-        print(stderr.decode("utf-8"))
+        st.write("Quá trình chạy không thành công.")
+        st.write("Standard Error:")
+        st.write(stderr.decode("utf-8"))
     process.wait()
     
     for root, dirs, files in os.walk(get_detection_folder()):
