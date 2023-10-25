@@ -6,7 +6,8 @@ from PIL import Image
 import os
 import shutil
 import subprocess
-import time
+import argpase
+from detect import detect 
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
@@ -92,13 +93,14 @@ def detect_diameter(namefile_txt, num_values):
     else:
         D_core = np.NaN
  # ------------------------------# run detect.py in yolov5----------------------------------------
-st.title('YOLOv5 Streamlit App')
+# st.title('YOLOv5 Streamlit App')
 if st.button("Run YOLOv5 Detection"):
     int_image_path = f'images/{uploaded_file.name}'
     path_detect_py = 'yolov5/detect.py'
     iou = '0.1'
     path_weight = "yolov5/runs/train/exp/weights/best.pt"
     uot_path = 'yolov5/runs/detect'
+    '''
     command = ["python", path_detect_py,
                "--source", int_image_path,
                "--save-txt",
@@ -118,7 +120,24 @@ if st.button("Run YOLOv5 Detection"):
         st.write("Standard Error:")
         st.write(stderr.decode("utf-8"))
     process.wait()
-    
+    '''
+
+    if __name__ == '__main__':
+    st.title('YOLOv5 Streamlit App')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--weights', nargs='+', type=str,
+                        default='path_weight', help='model.pt path(s)')
+    parser.add_argument('--source', type=str,
+                        default='int_image_path', help='source')
+    parser.add_argument('--iou-thres', type=float,
+                        default=0.1, help='IOU threshold for NMS')
+    parser.add_argument('--save-txt', action='store_true',
+                        help='save results to *.txt')
+    parser.add_argument('--project', default='runs/detect',
+                        help='save results to project/name')
+    opt = parser.parse_args()
+    st.write(opt)
+    detect(opt)
     for root, dirs, files in os.walk(get_detection_folder()):
         path_detect = root
         for file in files:
