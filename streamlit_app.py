@@ -96,12 +96,12 @@ def detect_diameter(namefile_txt, num_values):
 # st.title('YOLOv5 Streamlit App')
 if st.button("Run YOLOv5 Detection"):
     int_image_path = f'images/{uploaded_file.name}'
-    # path_detect_py = 'yolov5/detect.py'
-    path_detect_py = 'detect.py'
+    path_detect_py = 'yolov5/detect.py'
+    # path_detect_py = 'detect.py'
     iou = '0.1'
     path_weight = "yolov5/runs/train/exp/weights/best.pt"
     uot_path = 'yolov5/runs/detect'
-    '''
+    
     command = ["python", path_detect_py,
                "--source", int_image_path,
                "--save-txt",
@@ -121,64 +121,52 @@ if st.button("Run YOLOv5 Detection"):
         st.write("Standard Error:")
         st.write(stderr.decode("utf-8"))
     process.wait()
-    '''
+    
+    for root, dirs, files in os.walk(get_detection_folder()):
+        path_detect = root
+        for file in files:
+            if file.endswith('.txt'):
+                namefile_txt = os.path.join(root, file)
+                detect_diameter(namefile_txt, number)
+                st.write("Diameter core is:", D_core)
 
-    if __name__ == '__main__':
-        st.title('YOLOv5 Streamlit App')
-        parser = argparse.ArgumentParser()
-        parser.add_argument('--weights', nargs='+', type=str,default='path_weight')
-        parser.add_argument('--source', type=str,default='int_image_path')
-        parser.add_argument('--iou-thres', type=float, default=0.1)
-        parser.add_argument('--save-txt', action='store_true')
-        parser.add_argument('--project', default='runs/detect')
-        opt = parser.parse_args()
-        st.write(opt)
-        detect(opt)
-        for root, dirs, files in os.walk(get_detection_folder()):
-            path_detect = root
-            for file in files:
-                if file.endswith('.txt'):
-                    namefile_txt = os.path.join(root, file)
-                    detect_diameter(namefile_txt, number)
-                    st.write("Diameter core is:", D_core)
-    
-                if (file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg')):
-                    namefile_img = os.path.join(root, file)
-                    st.image(namefile_img, caption='Image detected')
-        if np.isnan(D_core):
-            st.write(
-                "Please reformat the scale bar on the image by using the paint app or Paint 3D to redraw the scale bar so that the length remains the same and the width increases 2-3 times.")
-        else:
-            col1, col2 = st.columns([3, 1])
-            with col1:
-                # Tạo biểu đồ histogram core
-                plt.figure(dpi=300)
-                plt.hist(diameter_core, bins=10, color='b', alpha=0.7)
-                plt.ylabel('Frequency')
-                plt.xlabel('Partical Diameter')
-                plt.title('Histogram core')
-                st.pyplot(plt)
-                # Tạo biểu đồ histogram shell
-                st.write("Diameter shell is:", D_shell)
-                plt.figure(dpi=300)
-                plt.hist(diameter_shell, bins=10, color='g', alpha=0.7)
-                plt.ylabel('Frequency')
-                plt.xlabel('Partical Diameter')
-                plt.title('Histogram shell')
-                st.pyplot(plt)
-    
-            with col2:
-                st.subheader("Diameter core")
-                data = pd.DataFrame(({"Diameter_core": diameter_core[:]}))
-                st.dataframe(data, height=300, width=200)
-    
-                st.subheader("Diameter shell")
-                data = pd.DataFrame(({'Diameter_shell': diameter_shell[:]}))
-                st.dataframe(data, height=300, width=200)
-    
-        # Xóa tệp hình ảnh tạm thời
-        process.wait()
-        os.remove(int_image_path)
-        # shutil.rmtree('yolov5/runs/detect')
+            if (file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg')):
+                namefile_img = os.path.join(root, file)
+                st.image(namefile_img, caption='Image detected')
+    if np.isnan(D_core):
+        st.write(
+            "Please reformat the scale bar on the image by using the paint app or Paint 3D to redraw the scale bar so that the length remains the same and the width increases 2-3 times.")
+    else:
+        col1, col2 = st.columns([3, 1])
+        with col1:
+            # Tạo biểu đồ histogram core
+            plt.figure(dpi=300)
+            plt.hist(diameter_core, bins=10, color='b', alpha=0.7)
+            plt.ylabel('Frequency')
+            plt.xlabel('Partical Diameter')
+            plt.title('Histogram core')
+            st.pyplot(plt)
+            # Tạo biểu đồ histogram shell
+            st.write("Diameter shell is:", D_shell)
+            plt.figure(dpi=300)
+            plt.hist(diameter_shell, bins=10, color='g', alpha=0.7)
+            plt.ylabel('Frequency')
+            plt.xlabel('Partical Diameter')
+            plt.title('Histogram shell')
+            st.pyplot(plt)
+
+        with col2:
+            st.subheader("Diameter core")
+            data = pd.DataFrame(({"Diameter_core": diameter_core[:]}))
+            st.dataframe(data, height=300, width=200)
+
+            st.subheader("Diameter shell")
+            data = pd.DataFrame(({'Diameter_shell': diameter_shell[:]}))
+            st.dataframe(data, height=300, width=200)
+
+    # Xóa tệp hình ảnh tạm thời
+    process.wait()
+    os.remove(int_image_path)
+    # shutil.rmtree('yolov5/runs/detect')
 
 
