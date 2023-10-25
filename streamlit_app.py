@@ -25,7 +25,6 @@ if uploaded_file is not None:
         new_width = int((width / height) * 640)
         image = image.resize((new_width, 640))
         image = image.save(f'images/{uploaded_file.name}')
-        # int_image_path = f'images/{uploaded_file.name}'
 else:
     st.error("Please upload a file")
 
@@ -40,11 +39,13 @@ def get_subdirs(b='.'):
         if os.path.isdir(bd):
             result.append(bd)
     return result
+    
 #  return newest folder
 def get_detection_folder():
     return max(get_subdirs(os.path.join('yolov5/runs/detect')), key=os.path.getmtime)
     # return max(get_subdirs(os.path.join('detect')), key=os.path.getmtime)
- # caculation diameter
+
+# caculation diameter
 diameter_core = []
 diameter_shell = []
 def detect_diameter(namefile_txt, num_values):
