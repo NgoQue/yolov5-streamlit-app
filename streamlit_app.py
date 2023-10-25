@@ -6,7 +6,7 @@ from PIL import Image
 import os
 import shutil
 import subprocess
-import argpase
+import argparse
 from detect import detect 
 # -------------------------Input------------------------------#
 # make a new folder save image
