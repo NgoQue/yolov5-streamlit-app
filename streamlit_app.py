@@ -126,16 +126,11 @@ if st.button("Run YOLOv5 Detection"):
     if __name__ == '__main__':
         st.title('YOLOv5 Streamlit App')
         parser = argparse.ArgumentParser()
-        parser.add_argument('--weights', nargs='+', type=str,
-                            default='path_weight', help='model.pt path(s)')
-        parser.add_argument('--source', type=str,
-                            default='int_image_path', help='source')
-        parser.add_argument('--iou-thres', type=float,
-                            default=0.1, help='IOU threshold for NMS')
-        parser.add_argument('--save-txt', action='store_true',
-                            help='save results to *.txt')
-        parser.add_argument('--project', default='runs/detect',
-                            help='save results to project/name')
+        parser.add_argument('--weights', nargs='+', type=str,default='path_weight')
+        parser.add_argument('--source', type=str,default='int_image_path')
+        parser.add_argument('--iou-thres', type=float, default=0.1)
+        parser.add_argument('--save-txt', action='store_true')
+        parser.add_argument('--project', default='runs/detect')
         opt = parser.parse_args()
         st.write(opt)
         detect(opt)
