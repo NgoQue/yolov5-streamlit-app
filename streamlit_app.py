@@ -160,9 +160,9 @@ if st.button("Run YOLOv5 Detection"):
         with col2:
             st.subheader("Diameter core")
             data = pd.DataFrame(({"Diameter_core": diameter_core[:]}))
-            st.dataframe(data, height=320, width=200)
+            st.dataframe(data, height=310, width=200)
 
-            st.subheader("Diameter shell")
+            st.subheader("/nDiameter shell")
             data = pd.DataFrame(({'Diameter_shell': diameter_shell[:]}))
             st.dataframe(data, height=330, width=200)
 
