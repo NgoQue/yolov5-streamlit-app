@@ -13,10 +13,6 @@ folder = os.path.join('images')
 if not os.path.exists(folder):
     os.makedirs(folder)
 
-folder_detect = os.path.join('detect')
-if not os.path.exists(folder_detect):
-    os.makedirs(folder_detect)
-
 uploaded_file = st.sidebar.file_uploader(
     "Upload your image file ", type=['png', 'jpeg', 'jpg'])
 if uploaded_file is not None:
@@ -46,8 +42,8 @@ def get_subdirs(b='.'):
     return result
 #  return newest folder
 def get_detection_folder():
-    # return max(get_subdirs(os.path.join('yolov5/runs/detect')), key=os.path.getmtime)
-    return max(get_subdirs(os.path.join('detect')), key=os.path.getmtime)
+    return max(get_subdirs(os.path.join('yolov5/runs/detect')), key=os.path.getmtime)
+    # return max(get_subdirs(os.path.join('detect')), key=os.path.getmtime)
  # caculation diameter
 diameter_core = []
 diameter_shell = []
@@ -101,7 +97,7 @@ if st.button("Run YOLOv5 Detection"):
     path_detect_py = 'yolov5/detect.py'
     iou = '0.1'
     path_weight = "yolov5/runs/train/exp/weights/best.pt"
-    uot_path = 'detect'
+    uot_path = 'yolov5/runs/detect'
     command = ["python", path_detect_py,
                "--source", int_image_path,
                "--save-txt",
