@@ -11,7 +11,11 @@ import subprocess
 folder = os.path.join('images')
 if not os.path.exists(folder):
     os.makedirs(folder)
-
+    
+folder_detect = os.path.join('yolov5/runs/detect')
+if not os.path.exists(folder_detect):
+    os.makedirs(folder_detect)
+    
 uploaded_file = st.sidebar.file_uploader(
     "Upload your image file ", type=['png', 'jpeg', 'jpg'])
 if uploaded_file is not None:
