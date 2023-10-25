@@ -6,8 +6,6 @@ from PIL import Image
 import os
 import shutil
 import subprocess
-import argparse
-from detect import detect 
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
