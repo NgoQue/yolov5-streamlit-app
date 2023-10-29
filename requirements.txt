@@ -15,7 +15,7 @@ requests>=2.23.0
 scipy>=1.4.1
 thop>=0.1.1  # FLOPs computation
 tqdm>=4.64.0
-ultralytics>=8.0.147
+ultralytics>=8.0.196
 # protobuf<=3.20.1  # https://github.com/ultralytics/yolov5/issues/8012
 
 # Logging ---------------------------------------------------------------------
