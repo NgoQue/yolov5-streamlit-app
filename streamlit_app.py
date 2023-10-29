@@ -110,7 +110,7 @@ if st.button("Run YOLOv5 Detection"):
                "--weights", path_weight,
                "--iou-thres", iou,
                '--project', uot_path]
-    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    process = subprocess.Popen(command, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     stdout, stderr = process.communicate()
     # Kiểm tra kết quả của việc chạy
