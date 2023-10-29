@@ -1,50 +1,34 @@
 # Usage: pip install -r requirements.txt
-streamlit
-# Base ------------------------------------------------------------------------
-gitpython>=3.1.30
-matplotlib>=3.3
-numpy>=1.22.2
-opencv-python>=4.1.1
-Pillow>=7.1.2 
+streamlit            
+importlib-resources==6.1.0
+matplotlib==3.8.0
+mp-api==0.30.5
+mpmath==1.3.0
+multiprocess==0.70.14
+numba==0.53.0
+numpy==1.26.0
+opencv-python==4.8.0.74
+pandas==2.1.1
+Pillow==10.0.0
+requests==2.31.0
+scipy==1.11.3
+seaborn==0.13.0
+setuptools==68.2.2
+six==1.16.0
+smmap==5.0.1
+tensorboard==2.9.1
+tensorboard-data-server==0.6.1
+tensorboard-plugin-wit==1.8.1
+tensorflow==2.9.1
+tensorflow-estimator==2.9.0
+tensorflow-io-gcs-filesystem==0.26.0
+termcolor==1.1.0
+thop==0.1.1.post2209072238
 torch==2.1.0
-#-f https://data.pyg.org/whl/torch-1.13.0+cpu.html
-#torchvision==0.9.0
 torchvision==0.16.0
-psutil  # system resources
-PyYAML>=5.3.1
-requests>=2.23.0
-scipy>=1.4.1
-thop>=0.1.1  # FLOPs computation
-tqdm>=4.64.0
-ultralytics>=8.0.196
-# protobuf<=3.20.1  # https://github.com/ultralytics/yolov5/issues/8012
-
-# Logging ---------------------------------------------------------------------
-tensorboard>=2.4.1
-# clearml>=1.2.0
-# comet
-
-# Plotting --------------------------------------------------------------------
-pandas>=1.1.4
-seaborn>=0.11.0
-
-# Export ----------------------------------------------------------------------
-# coremltools>=6.0  # CoreML export
-# onnx>=1.10.0  # ONNX export
-# onnx-simplifier>=0.4.1  # ONNX simplifier
-# nvidia-pyindex  # TensorRT export
-# nvidia-tensorrt  # TensorRT export
-# scikit-learn<=1.1.2  # CoreML quantization
-# tensorflow>=2.4.0  # TF exports (-cpu, -aarch64, -macos)
-# tensorflowjs>=3.9.0  # TF.js export
-# openvino-dev>=2023.0  # OpenVINO export
-
-# Deploy ----------------------------------------------------------------------
-setuptools>=65.5.1 # Snyk vulnerability fix
-# tritonclient[all]~=2.24.0
-
-# Extras ----------------------------------------------------------------------
-# ipython  # interactive notebook
-# mss  # screenshots
-# albumentations>=1.0.3
-pycocotools>=2.0.6  # COCO mAP
+tqdm==4.65.0
+trdg==1.8.0
+typing_extensions==4.4.0
+tzdata==2023.3
+ultralytics==8.0.196
+uncertainties==3.1.7
