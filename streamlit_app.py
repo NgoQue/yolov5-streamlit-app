@@ -14,7 +14,7 @@ import platform
 import sys
 from pathlib import Path
 import torch
-from ultralytics
+import ultralytics
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
