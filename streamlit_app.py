@@ -14,7 +14,7 @@ import platform
 import sys
 from pathlib import Path
 import torch
-from ultralytics.utils.plotting import Annotator, colors, save_one_box
+from ultralytics
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
