@@ -14,7 +14,7 @@ import platform
 import sys
 from pathlib import Path
 import torch
-from ultralytics.models import RTDETR, SAM, YOLO
+# from ultralytics.models import RTDETR, SAM, YOLO
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
