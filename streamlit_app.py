@@ -7,7 +7,7 @@ import os
 import shutil
 import subprocess
 import torch 
-import ultralitics
+import ultralytics
 
 # -------------------------Input------------------------------#
 # make a new folder save image
