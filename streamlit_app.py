@@ -100,7 +100,6 @@ def detect_diameter(namefile_txt, num_values):
  # ------------------------------# run detect.py in yolov5----------------------------------------
 st.title('YOLOv5 Streamlit App')
 if st.button("Run YOLOv5 Detection"):
-    '''
     int_image_path = f'images/{uploaded_file.name}'
     path_detect_py = 'yolov5/detect.py'
     iou = '0.1'
@@ -126,7 +125,6 @@ if st.button("Run YOLOv5 Detection"):
         st.write("Standard Error:")
         st.write(stderr.decode("utf-8"))
     process.wait()
-'''
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
@@ -214,7 +212,7 @@ if __name__ == '__main__':
     os.remove(int_image_path)
     # time.sleep(7)
     # shutil.rmtree('yolov5/runs/detect')
-    '''
+'''
 from io import StringIO
 from pathlib import Path
 import streamlit as st
