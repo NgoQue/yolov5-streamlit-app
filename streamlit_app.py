@@ -111,7 +111,16 @@ if st.button("Run YOLOv5 Detection"):
                '--conf-thres', conf,
                '--project', uot_path]
     process = subprocess.Popen(command, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    # time.sleep(7)
+    stdout, stderr = process.communicate()
+
+    if process.returncode == 0:
+        st.write("Quá trình chạy thành công.")
+        st.write("Standard Output:")
+        st.write(stdout.decode("utf-8"))
+    else:
+        st.write("Quá trình chạy không thành công.")
+        st.write("Standard Error:")
+        st.write(stderr.decode("utf-8"))
     process.wait()
 
     for root, dirs, files in os.walk(get_detection_folder()):
