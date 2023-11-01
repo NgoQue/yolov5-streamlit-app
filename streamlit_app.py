@@ -125,7 +125,7 @@ if st.button("Run YOLOv5 Detection"):
         st.write(stderr.decode("utf-8"))
     process.wait()
 '''
-    if __name__ == '__main__':
+if __name__ == '__main__':
 
     st.title('YOLOv5 Streamlit App')
 
