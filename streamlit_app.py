@@ -105,6 +105,7 @@ if st.button("Run YOLOv5 Detection"):
     conf = '0.55'
     path_weight = "yolov5/runs/train/exp/weights/best.pt"
     uot_path = 'yolov5/runs/detect'
+    '''
     command = ["python", path_detect_py,
                "--source", int_image_path,
                "--save-txt",
@@ -124,7 +125,49 @@ if st.button("Run YOLOv5 Detection"):
         st.write("Standard Error:")
         st.write(stderr.decode("utf-8"))
     process.wait()
+'''
+    if __name__ == '__main__':
 
+    st.title('YOLOv5 Streamlit App')
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--weights', nargs='+', type=str,
+                        default='weights/yolov5s.pt', help='model.pt path(s)')
+    parser.add_argument('--source', type=str,
+                        default='data/images', help='source')
+    parser.add_argument('--img-size', type=int, default=640,
+                        help='inference size (pixels)')
+    parser.add_argument('--conf-thres', type=float,
+                        default=0.35, help='object confidence threshold')
+    parser.add_argument('--iou-thres', type=float,
+                        default=0.45, help='IOU threshold for NMS')
+    parser.add_argument('--device', default='',
+                        help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
+    parser.add_argument('--view-img', action='store_true',
+                        help='display results')
+    parser.add_argument('--save-txt', action='store_true',
+                        help='save results to *.txt')
+    parser.add_argument('--save-conf', action='store_true',
+                        help='save confidences in --save-txt labels')
+    parser.add_argument('--nosave', action='store_true',
+                        help='do not save images/videos')
+    parser.add_argument('--classes', nargs='+', type=int,
+                        help='filter by class: --class 0, or --class 0 2 3')
+    parser.add_argument('--agnostic-nms', action='store_true',
+                        help='class-agnostic NMS')
+    parser.add_argument('--augment', action='store_true',
+                        help='augmented inference')
+    parser.add_argument('--update', action='store_true',
+                        help='update all models')
+    parser.add_argument('--project', default='runs/detect',
+                        help='save results to project/name')
+    parser.add_argument('--name', default='exp',
+                        help='save results to project/name')
+    parser.add_argument('--exist-ok', action='store_true',
+                        help='existing project/name ok, do not increment')
+    opt = parser.parse_args()
+    print(opt)
+    
     for root, dirs, files in os.walk(get_detection_folder()):
         path_detect = root
         for file in files:
