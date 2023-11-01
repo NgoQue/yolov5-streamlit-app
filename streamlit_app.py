@@ -6,19 +6,17 @@ from PIL import Image
 import os
 import shutil
 import subprocess
-import torch 
-import ultralytics
-
+import time
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
 if not os.path.exists(folder):
     os.makedirs(folder)
-    
+
 folder_detect = os.path.join('yolov5/runs/detect')
 if not os.path.exists(folder_detect):
     os.makedirs(folder_detect)
-    
+
 uploaded_file = st.sidebar.file_uploader(
     "Upload your image file ", type=['png', 'jpeg', 'jpg'])
 if uploaded_file is not None:
@@ -31,6 +29,7 @@ if uploaded_file is not None:
         new_width = int((width / height) * 640)
         image = image.resize((new_width, 640))
         image = image.save(f'images/{uploaded_file.name}')
+        # int_image_path = f'images/{uploaded_file.name}'
 else:
     st.error("Please upload a file")
 
@@ -45,13 +44,11 @@ def get_subdirs(b='.'):
         if os.path.isdir(bd):
             result.append(bd)
     return result
-    
 #  return newest folder
 def get_detection_folder():
     return max(get_subdirs(os.path.join('yolov5/runs/detect')), key=os.path.getmtime)
     # return max(get_subdirs(os.path.join('detect')), key=os.path.getmtime)
-
-# caculation diameter
+ # caculation diameter
 diameter_core = []
 diameter_shell = []
 def detect_diameter(namefile_txt, num_values):
@@ -98,35 +95,25 @@ def detect_diameter(namefile_txt, num_values):
     else:
         D_core = np.NaN
  # ------------------------------# run detect.py in yolov5----------------------------------------
-# st.title('YOLOv5 Streamlit App')
+st.title('YOLOv5 Streamlit App')
 if st.button("Run YOLOv5 Detection"):
     int_image_path = f'images/{uploaded_file.name}'
     path_detect_py = 'yolov5/detect.py'
-    # path_detect_py = 'detect.py'
     iou = '0.1'
+    conf = '0.55'
     path_weight = "yolov5/runs/train/exp/weights/best.pt"
     uot_path = 'yolov5/runs/detect'
-    
     command = ["python", path_detect_py,
                "--source", int_image_path,
                "--save-txt",
                "--weights", path_weight,
                "--iou-thres", iou,
+               '--conf-thres', conf,
                '--project', uot_path]
-    process = subprocess.Popen(command, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-    stdout, stderr = process.communicate()
-    # Kiểm tra kết quả của việc chạy
-    if process.returncode == 0:
-        st.write("Quá trình chạy thành công.")
-        st.write("Standard Output:")
-        st.write(stdout.decode("utf-8"))  
-    else:
-        st.write("Quá trình chạy không thành công.")
-        st.write("Standard Error:")
-        st.write(stderr.decode("utf-8"))
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    # time.sleep(7)
     process.wait()
-    
+
     for root, dirs, files in os.walk(get_detection_folder()):
         path_detect = root
         for file in files:
@@ -163,15 +150,14 @@ if st.button("Run YOLOv5 Detection"):
         with col2:
             st.subheader("Diameter core")
             data = pd.DataFrame(({"Diameter_core": diameter_core[:]}))
-            st.dataframe(data, height=330, width=220)
+            st.dataframe(data, height=300, width=200)
 
             st.subheader("Diameter shell")
             data = pd.DataFrame(({'Diameter_shell': diameter_shell[:]}))
-            st.dataframe(data, height=330, width=220)
+            st.dataframe(data, height=300, width=200)
 
     # Xóa tệp hình ảnh tạm thời
     process.wait()
     os.remove(int_image_path)
-    # shutil.rmtree('yolov5/runs/detect')
-
-
+    # time.sleep(7)
+    shutil.rmtree('yolov5/runs/detect')
