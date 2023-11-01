@@ -8,7 +8,6 @@ import shutil
 import subprocess
 import time
 import torch
-from ultralytics.utils.plotting import Annotator, colors, save_one_box
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
@@ -99,13 +98,13 @@ def detect_diameter(namefile_txt, num_values):
  # ------------------------------# run detect.py in yolov5----------------------------------------
 st.title('YOLOv5 Streamlit App')
 if st.button("Run YOLOv5 Detection"):
+    '''
     int_image_path = f'images/{uploaded_file.name}'
     path_detect_py = 'yolov5/detect.py'
     iou = '0.1'
     conf = '0.55'
     path_weight = "yolov5/runs/train/exp/weights/best.pt"
     uot_path = 'yolov5/runs/detect'
-    '''
     command = ["python", path_detect_py,
                "--source", int_image_path,
                "--save-txt",
@@ -138,9 +137,9 @@ if st.button("Run YOLOv5 Detection"):
     parser.add_argument('--img-size', type=int, default=640,
                         help='inference size (pixels)')
     parser.add_argument('--conf-thres', type=float,
-                        default=0.35, help='object confidence threshold')
+                        default=0.55, help='object confidence threshold')
     parser.add_argument('--iou-thres', type=float,
-                        default=0.45, help='IOU threshold for NMS')
+                        default=0.1, help='IOU threshold for NMS')
     parser.add_argument('--device', default='',
                         help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
     parser.add_argument('--view-img', action='store_true',
