@@ -99,13 +99,13 @@ def detect_diameter(namefile_txt, num_values):
  # ------------------------------# run detect.py in yolov5----------------------------------------
 st.title('YOLOv5 Streamlit App')
 if st.button("Run YOLOv5 Detection"):
-    '''
     int_image_path = f'images/{uploaded_file.name}'
     path_detect_py = 'yolov5/detect.py'
     iou = '0.1'
     conf = '0.55'
     path_weight = "yolov5/runs/train/exp/weights/best.pt"
     uot_path = 'yolov5/runs/detect'
+    '''
     command = ["python", path_detect_py,
                "--source", int_image_path,
                "--save-txt",
@@ -130,9 +130,9 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str,
-                        default='weights/yolov5s.pt', help='model.pt path(s)')
+                        default='yolov5/runs/train/exp/weights/best.pt', help='model.pt path(s)')
     parser.add_argument('--source', type=str,
-                        default='data/images', help='source')
+                        default=int_image_path, help='source')
     parser.add_argument('--img-size', type=int, default=640,
                         help='inference size (pixels)')
     parser.add_argument('--conf-thres', type=float,
