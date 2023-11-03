@@ -2,8 +2,8 @@ import argparse
 import time
 from pathlib import Path
 
-import cv2
 import torch
+import cv2
 import torch.backends.cudnn as cudnn
 from numpy import random
 
