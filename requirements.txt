@@ -18,7 +18,7 @@ ultralytics>=8.0.147
 # protobuf<=3.20.1  # https://github.com/ultralytics/yolov5/issues/8012
 
 # Logging ---------------------------------------------------------------------
-# tensorboard>=2.4.1
+tensorboard>=2.4.1
 # clearml>=1.2.0
 # comet
 
@@ -38,11 +38,11 @@ seaborn>=0.11.0
 # openvino-dev>=2023.0  # OpenVINO export
 
 # Deploy ----------------------------------------------------------------------
-setuptools>=65.5.1 # Snyk vulnerability fix
+# setuptools>=65.5.1 # Snyk vulnerability fix
 # tritonclient[all]~=2.24.0
 
 # Extras ----------------------------------------------------------------------
 # ipython  # interactive notebook
 # mss  # screenshots
 # albumentations>=1.0.3
-# pycocotools>=2.0.6  # COCO mAP
+pycocotools>=2.0.6  # COCO mAP
