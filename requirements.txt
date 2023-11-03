@@ -26,7 +26,7 @@ ultralytics>=8.0.147
 pandas>=1.1.4
 seaborn>=0.11.0
 
-mesa-common-dev==20.0.8
+#mesa-common-dev==20.0.8
 libgl1-mesa-glx==20.0.8
 # Export ----------------------------------------------------------------------
 # coremltools>=6.0  # CoreML export
