@@ -163,8 +163,7 @@ if __name__ == '__main__':
                         help='save results to project/name')
     parser.add_argument('--exist-ok', action='store_true',
                         help='existing project/name ok, do not increment')
-    opt = parser.parse_args()
-    print(opt)
+    detect(opt.int_image_path)
     
     for root, dirs, files in os.walk(get_detection_folder()):
         path_detect = root
