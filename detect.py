@@ -212,6 +212,6 @@ def detect(source, save_img=False):
         opt = parser.parse_args()
         opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand
         print_args(vars(opt))
-        return opt
+    
         check_requirements(ROOT / 'requirements.txt', exclude=('tensorboard', 'thop'))
     
