@@ -214,7 +214,7 @@ def detect(source):
         parser.add_argument('--source', type=str, default='images', help='file/dir/URL/glob/screen/0(webcam)')
         parser.add_argument('--data', type=str, default=ROOT / 'data/coco128.yaml', help='(optional) dataset.yaml path')
         parser.add_argument('--imgsz', '--img', '--img-size', nargs='+', type=int, default=[640], help='inference size h,w')
-        parser.add_argument('--conf-thres', type=float, default=0.55, help='confidence threshold')
+        parser.add_argument('--conf-thres', type=float, default=0.5, help='confidence threshold')
         parser.add_argument('--iou-thres', type=float, default=0.1, help='NMS IoU threshold')
         parser.add_argument('--max-det', type=int, default=1000, help='maximum detections per image')
         parser.add_argument('--device', default='', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
