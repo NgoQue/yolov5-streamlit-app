@@ -166,51 +166,51 @@ if __name__ == '__main__':
                         help='existing project/name ok, do not increment')
     detect(opt.int_image_path)
     '''
-    for root, dirs, files in os.walk(get_detection_folder()):
-        path_detect = root
-        for file in files:
-            if file.endswith('.txt'):
-                namefile_txt = os.path.join(root, file)
-                detect_diameter(namefile_txt, number)
-                st.write("Diameter core is:", D_core)
+for root, dirs, files in os.walk(get_detection_folder()):
+    path_detect = root
+    for file in files:
+        if file.endswith('.txt'):
+            namefile_txt = os.path.join(root, file)
+            detect_diameter(namefile_txt, number)
+            st.write("Diameter core is:", D_core)
 
-            if (file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg')):
-                namefile_img = os.path.join(root, file)
-                st.image(namefile_img, caption='Image detected')
-    if np.isnan(D_core):
-        st.write(
-            "Please reformat the scale bar on the image by using the paint app or Paint 3D to redraw the scale bar so that the length remains the same and the width increases 2-3 times.")
-    else:
-        col1, col2 = st.columns([3, 1])
-        with col1:
-            # Tạo biểu đồ histogram core
-            plt.figure(dpi=300)
-            plt.hist(diameter_core, bins=10, color='b', alpha=0.7)
-            plt.ylabel('Frequency')
-            plt.xlabel('Partical Diameter')
-            plt.title('Histogram core')
-            st.pyplot(plt)
-            # Tạo biểu đồ histogram shell
-            st.write("Diameter shell is:", D_shell)
-            plt.figure(dpi=300)
-            plt.hist(diameter_shell, bins=10, color='g', alpha=0.7)
-            plt.ylabel('Frequency')
-            plt.xlabel('Partical Diameter')
-            plt.title('Histogram shell')
-            st.pyplot(plt)
+        if (file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg')):
+            namefile_img = os.path.join(root, file)
+            st.image(namefile_img, caption='Image detected')
+if np.isnan(D_core):
+    st.write(
+        "Please reformat the scale bar on the image by using the paint app or Paint 3D to redraw the scale bar so that the length remains the same and the width increases 2-3 times.")
+else:
+    col1, col2 = st.columns([3, 1])
+    with col1:
+        # Tạo biểu đồ histogram core
+        plt.figure(dpi=300)
+        plt.hist(diameter_core, bins=10, color='b', alpha=0.7)
+        plt.ylabel('Frequency')
+        plt.xlabel('Partical Diameter')
+        plt.title('Histogram core')
+        st.pyplot(plt)
+        # Tạo biểu đồ histogram shell
+        st.write("Diameter shell is:", D_shell)
+        plt.figure(dpi=300)
+        plt.hist(diameter_shell, bins=10, color='g', alpha=0.7)
+        plt.ylabel('Frequency')
+        plt.xlabel('Partical Diameter')
+        plt.title('Histogram shell')
+        st.pyplot(plt)
 
-        with col2:
-            st.subheader("Diameter core")
-            data = pd.DataFrame(({"Diameter_core": diameter_core[:]}))
-            st.dataframe(data, height=300, width=200)
+    with col2:
+        st.subheader("Diameter core")
+        data = pd.DataFrame(({"Diameter_core": diameter_core[:]}))
+        st.dataframe(data, height=300, width=200)
 
-            st.subheader("Diameter shell")
-            data = pd.DataFrame(({'Diameter_shell': diameter_shell[:]}))
-            st.dataframe(data, height=300, width=200)
+        st.subheader("Diameter shell")
+        data = pd.DataFrame(({'Diameter_shell': diameter_shell[:]}))
+        st.dataframe(data, height=300, width=200)
 
-    # Xóa tệp hình ảnh tạm thời
-    process.wait()
-    os.remove(int_image_path)
-    # time.sleep(7)
-    # shutil.rmtree('yolov5/runs/detect')
+# Xóa tệp hình ảnh tạm thời
+process.wait()
+os.remove(int_image_path)
+# time.sleep(7)
+# shutil.rmtree('yolov5/runs/detect')
 
