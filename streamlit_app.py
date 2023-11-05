@@ -106,7 +106,7 @@ if st.button("Run YOLOv5 Detection"):
     conf = '0.55'
     path_weight = "yolov5/runs/train/exp/weights/best.pt"
     uot_path = 'yolov5/runs/detect'
-    '''
+    
     command = ["python", path_detect_py,
                "--source", int_image_path,
                "--save-txt",
@@ -165,7 +165,7 @@ if __name__ == '__main__':
     parser.add_argument('--exist-ok', action='store_true',
                         help='existing project/name ok, do not increment')
     detect(opt.int_image_path)
-    
+    '''
     for root, dirs, files in os.walk(get_detection_folder()):
         path_detect = root
         for file in files:
