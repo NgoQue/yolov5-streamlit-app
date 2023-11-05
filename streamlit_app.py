@@ -115,6 +115,7 @@ if st.button("Run YOLOv5 Detection"):
         parser.add_argument('--conf-thres', type=float, default=0.5, help='confidence threshold')
         parser.add_argument('--iou-thres', type=float, default=0.1, help='NMS IoU threshold')
         parser.add_argument('--save-txt', action='store_true', help='save results to *.txt')
+        parser.set_defaults(save_txt=True)
         opt = parser.parse_args()
         st.write(opt)
         detect(opt)
