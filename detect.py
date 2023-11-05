@@ -29,7 +29,7 @@ def detect(source):
     save_conf=False,  # save confidences in --save-txt labels
     save_crop=False,  # save cropped prediction boxes
     nosave=False,
-    save_img = not source.nosave and not source.endswith('.txt') # save inference images
+    save_img = not nosave and not source.endswith('.txt') # save inference images
     is_file = Path(source).suffix[1:] in (IMG_FORMATS + VID_FORMATS)
     is_url = source.lower().startswith(('rtsp://', 'rtmp://', 'http://', 'https://'))
     webcam = source.isnumeric() or source.endswith('.streams') or (is_url and not is_file)
