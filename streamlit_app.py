@@ -131,6 +131,7 @@ if st.button("Run YOLOv5 Detection"):
                 if (file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg')):
                     namefile_img = os.path.join(root, file)
                     st.image(namefile_img, caption='Image detected')
+                    break
         if np.isnan(D_core):
             st.write(
                 "Please reformat the scale bar on the image by using the paint app or Paint 3D to redraw the scale bar so that the length remains the same and the width increases 2-3 times.")
