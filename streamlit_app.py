@@ -113,7 +113,7 @@ if __name__ == '__main__':
     parser.add_argument('--source', type=str, default=int_image_path, help='file/dir/URL/glob/screen/0(webcam)')
     parser.add_argument('--conf-thres', type=float, default=0.55, help='confidence threshold')
     parser.add_argument('--iou-thres', type=float, default=0.1, help='NMS IoU threshold')
-    parser.add_argument('--save-txt')
+    parser.add_argument('--save-txt', action='store_true', help='save results to *.txt')
     opt = parser.parse_args()
     st.write(opt)
     detect(opt)
