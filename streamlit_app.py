@@ -109,8 +109,8 @@ if st.button("Run YOLOv5 Detection"):
    
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', nargs='+', type=str, default=ROOT / path_weight, help='model path or triton URL')
-    parser.add_argument('--source', type=str, default=ROOT / 'data/images', help='file/dir/URL/glob/screen/0(webcam)')
+    parser.add_argument('--weights', nargs='+', type=str, default=path_weight / 'weight.pt', help='model path or triton URL')
+    parser.add_argument('--source', type=str, default=int_images_path / 'data/images', help='file/dir/URL/glob/screen/0(webcam)')
     parser.add_argument('--conf-thres', type=float, default=0.55, help='confidence threshold')
     parser.add_argument('--iou-thres', type=float, default=0.1, help='NMS IoU threshold')
     parser.add_argument('--save-txt', action='store_true', help='save results to *.txt')
