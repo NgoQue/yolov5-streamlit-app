@@ -112,7 +112,7 @@ if st.button("Run YOLOv5 Detection"):
         parser = argparse.ArgumentParser()
         parser.add_argument('--weights', nargs='+', type=str, default=path_weight , help='model path or triton URL')
         parser.add_argument('--source', type=str, default=int_image_path, help='file/dir/URL/glob/screen/0(webcam)')
-        parser.add_argument('--conf-thres', type=float, default=0.55, help='confidence threshold')
+        parser.add_argument('--conf-thres', type=float, default=0.5, help='confidence threshold')
         parser.add_argument('--iou-thres', type=float, default=0.1, help='NMS IoU threshold')
         parser.add_argument('--save-txt', action='store_true', help='save results to *.txt')
         opt = parser.parse_args()
@@ -162,7 +162,7 @@ if st.button("Run YOLOv5 Detection"):
                 st.dataframe(data, height=300, width=200)
         
         # Xóa tệp hình ảnh tạm thời
-        process.wait()
+        # process.wait()
         os.remove(int_image_path)
         shutil.rmtree('yolov5/runs/detect')
 
