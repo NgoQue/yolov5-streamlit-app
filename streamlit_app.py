@@ -163,5 +163,5 @@ if __name__ == '__main__':
     # Xóa tệp hình ảnh tạm thời
     process.wait()
     os.remove(int_image_path)
-    # shutil.rmtree('yolov5/runs/detect')
+    shutil.rmtree('yolov5/runs/detect')
 
