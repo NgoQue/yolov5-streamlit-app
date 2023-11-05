@@ -9,6 +9,7 @@ import subprocess
 from detect import detect
 import sys
 import argparse
+import cv2
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
