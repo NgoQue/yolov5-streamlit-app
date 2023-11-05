@@ -31,7 +31,7 @@ def detect(source):
     max_det=1000 # maximum detections per image
     device=''  # cuda device, i.e. 0 or 0,1,2,3 or cpu
     view_img=False  # show results
-    save_txt=False  # save results to *.txt
+    save_txt=True  # save results to *.txt
     save_csv=False # save results in CSV format
     save_conf=False  # save confidences in --save-txt labels
     save_crop=False # save cropped prediction boxes
@@ -66,7 +66,8 @@ def detect(source):
 
     # Load model
     device = select_device(device)
-    model = DetectMultiBackend(weights, device=device, dnn=dnn, data=data, fp16=half)
+    # model = DetectMultiBackend(weights, device=device, dnn=dnn, data=data, fp16=half)
+    model = DetectMultiBackend(weights, device=device, dnn=dnn, fp16=half)
     stride, names, pt = model.stride, model.names, model.pt
     imgsz = check_img_size(imgsz, s=stride)  # check image size
 
