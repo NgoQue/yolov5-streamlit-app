@@ -22,7 +22,13 @@ from utils.general import (LOGGER, Profile, check_file, check_img_size, check_im
 from utils.torch_utils import select_device, smart_inference_mode
 
 
-def detect(source, save_img=True):
+def detect(source):
+    view_img=False,  # show results
+    save_txt=False,  # save results to *.txt
+    save_csv=False,  # save results in CSV format
+    save_conf=False,  # save confidences in --save-txt labels
+    save_crop=False,  # save cropped prediction boxes
+    nosave=False,
     save_img = not source.nosave and not source.endswith('.txt') # save inference images
     is_file = Path(source).suffix[1:] in (IMG_FORMATS + VID_FORMATS)
     is_url = source.lower().startswith(('rtsp://', 'rtmp://', 'http://', 'https://'))
