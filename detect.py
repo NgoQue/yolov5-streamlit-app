@@ -214,5 +214,4 @@ def detect(source, save_img=False):
         print_args(vars(opt))
         return opt
         check_requirements(ROOT / 'requirements.txt', exclude=('tensorboard', 'thop'))
-        run(**vars(opt))
     
