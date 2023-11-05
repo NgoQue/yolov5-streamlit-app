@@ -108,42 +108,14 @@ if st.button("Run YOLOv5 Detection"):
     uot_path = 'yolov5/runs/detect'
    
 if __name__ == '__main__':
-
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', nargs='+', type=str,
-                        default='yolov5/runs/train/exp/weights/best.pt', help='model.pt path(s)')
-    parser.add_argument('--source', type=str,
-                        default=int_image_path, help='source')
-    parser.add_argument('--img-size', type=int, default=640,
-                        help='inference size (pixels)')
-    parser.add_argument('--conf-thres', type=float,
-                        default=0.55, help='object confidence threshold')
-    parser.add_argument('--iou-thres', type=float,
-                        default=0.1, help='IOU threshold for NMS')
-    parser.add_argument('--device', default='',
-                        help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
-    parser.add_argument('--view-img', action='store_true',
-                        help='display results')
-    parser.add_argument('--save-txt', action='store_true',
-                        help='save results to *.txt')
-    parser.add_argument('--save-conf', action='store_true',
-                        help='save confidences in --save-txt labels')
-    parser.add_argument('--nosave', action='store_true',
-                        help='do not save images/videos')
-    parser.add_argument('--classes', nargs='+', type=int,
-                        help='filter by class: --class 0, or --class 0 2 3')
-    parser.add_argument('--agnostic-nms', action='store_true',
-                        help='class-agnostic NMS')
-    parser.add_argument('--augment', action='store_true',
-                        help='augmented inference')
-    parser.add_argument('--update', action='store_true',
-                        help='update all models')
-    parser.add_argument('--project', default='runs/detect',
-                        help='save results to project/name')
-    parser.add_argument('--name', default='exp',
-                        help='save results to project/name')
-    parser.add_argument('--exist-ok', action='store_true',
-                        help='existing project/name ok, do not increment')
+        parser.add_argument('--weights', nargs='+', type=str, default=ROOT / path_weight, help='model path or triton URL')
+        parser.add_argument('--source', type=str, default=ROOT / 'data/images', help='file/dir/URL/glob/screen/0(webcam)')
+        parser.add_argument('--conf-thres', type=float, default=0.55, help='confidence threshold')
+        parser.add_argument('--iou-thres', type=float, default=0.1, help='NMS IoU threshold')
+        parser.add_argument('--save-txt', action='store_true', help='save results to *.txt')
+    opt = parser.parse_args()
+    st.write(opt)
     detect(int_image_path)
 
     for root, dirs, files in os.walk(get_detection_folder()):
