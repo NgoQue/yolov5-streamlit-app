@@ -119,7 +119,8 @@ if st.button("Run YOLOv5 Detection"):
         opt = parser.parse_args()
         st.write(opt)
         detect(opt)
-    
+        time.sleep(7)
+        
         for root, dirs, files in os.walk(get_detection_folder()):
             st.write(root, dirs, files)
             for file in files:
@@ -163,7 +164,7 @@ if st.button("Run YOLOv5 Detection"):
                 st.dataframe(data, height=300, width=200)
         
         # Xóa tệp hình ảnh tạm thời
-        # process.wait()
+        time.sleep(7)
         os.remove(int_image_path)
         shutil.rmtree('yolov5/runs/detect')
 
