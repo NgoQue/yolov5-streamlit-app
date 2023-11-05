@@ -10,6 +10,7 @@ import subprocess
 from detect import detect
 import sys
 import argparse
+import time
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
