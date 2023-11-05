@@ -22,9 +22,8 @@ from utils.general import (LOGGER, Profile, check_file, check_img_size, check_im
 from utils.torch_utils import select_device, smart_inference_mode
 
 
-def detect(source, save_img=False):
-    source = str(source)
-    save_img = not source.save and not source.endswith('.txt') # save inference images
+def detect(source, save_img=True):
+    save_img = not source.nosave and not source.endswith('.txt') # save inference images
     is_file = Path(source).suffix[1:] in (IMG_FORMATS + VID_FORMATS)
     is_url = source.lower().startswith(('rtsp://', 'rtmp://', 'http://', 'https://'))
     webcam = source.isnumeric() or source.endswith('.streams') or (is_url and not is_file)
