@@ -116,7 +116,7 @@ if __name__ == '__main__':
     parser.add_argument('--save-txt', action='store_true', help='save results to *.txt')
     opt = parser.parse_args()
     st.write(opt)
-    detect(int_image_path)
+    detect(opt)
 
     for root, dirs, files in os.walk(get_detection_folder()):
         path_detect = root
