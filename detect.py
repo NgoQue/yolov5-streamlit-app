@@ -25,7 +25,7 @@ from utils.torch_utils import select_device, smart_inference_mode
 def detect(source):
     weights='yolov5/runs/train/exp/weights/best.pt'  # model path or triton URL
     data = 'yolov5/images/data/bus.jpg'
-    # source='images'  # file/dir/URL/glob/screen/0(webcam)
+    source='images'  # file/dir/URL/glob/screen/0(webcam)
     imgsz=(640, 640)  # inference size (height, width)
     conf_thres=0.55  # confidence threshold
     iou_thres=0.1  # NMS IOU threshold
