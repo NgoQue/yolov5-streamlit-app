@@ -92,15 +92,25 @@ def detect_diameter(namefile_txt, num_values):
     diameter_core = np.array(diameter_core)
     diameter_shell = np.array(diameter_shell)
 
-    if (len(diameter_shell) > 0):
-        D_shell = np.mean(diameter_shell)
-    else:
-        D_shell = np.NaN
-
+    if (len(diameter_core) > 0):
+        for i in range(0, len(diameter_core)):
+            if diameter_core[i] < min(diameter_shell):
+                diameter_core1 = diameter_core1 + [diameter_core[i]]
+        D_core = np.mean(diameter_core1)
     if (len(diameter_core) > 0):
         D_core = np.mean(diameter_core)
     else:
         D_core = np.NaN
+
+    if (len(diameter_shell) > 0):
+        for i in range(0, len(diameter_shell)):
+            if diameter_shell[i] > max(diameter_core):
+                diameter_shell1 = diameter_shell1 + [diameter_shell[i]]
+        D_shell = np.mean(diameter_shell1)
+    if (len(diameter_shell) > 0):
+        D_shell = np.mean(diameter_shell)
+    else:
+        D_shell = np.NaN
         
  # ------------------------------# run detect.py in yolov5----------------------------------------
 st.title('YOLOv5 Streamlit App')
