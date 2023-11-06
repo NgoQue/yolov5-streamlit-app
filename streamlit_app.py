@@ -157,7 +157,7 @@ if st.button("Run YOLOv5 Detection"):
             with col2:
                 st.subheader("Diameter core")
                 data = pd.DataFrame(({"Diameter_core": diameter_core1[:]}))
-                st.dataframe(data, height=350, width=200)
+                st.dataframe(data, height=370, width=200)
         
         if not np.isnan(D_shell):
             with col1:
@@ -173,7 +173,7 @@ if st.button("Run YOLOv5 Detection"):
             with col2:
                 st.subheader("Diameter shell")
                 data = pd.DataFrame(({'Diameter_shell': diameter_shell1[:]}))
-                st.dataframe(data, height=350, width=200)
+                st.dataframe(data, height=370, width=200)
         
         # Xóa tệp hình ảnh tạm thời
         time.sleep(7)
