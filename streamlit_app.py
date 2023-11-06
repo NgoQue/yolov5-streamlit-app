@@ -133,7 +133,7 @@ if st.button("Run YOLOv5 Detection"):
                     st.write("Diameter core is:", D_core)
 
                     # Mở file .txt và đọc nội dung
-                    with open('namefile_txt', 'r') as file:
+                    with open(namefile_txt, 'r') as file:
                         file_contents = file.read()
                     # Hiển thị nội dung file trong ứng dụng Streamlit
                     st.title('Nội dung file .txt')
