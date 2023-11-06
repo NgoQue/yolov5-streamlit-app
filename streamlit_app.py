@@ -127,6 +127,10 @@ if st.button("Run YOLOv5 Detection"):
         for root, dirs, files in os.walk(get_detection_folder()):
             # st.write(root, dirs, files)
             for file in files:
+                if (file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg')):
+                    namefile_img = os.path.join(root, file)
+                    st.image(namefile_img, caption='Image detected')
+                    
                 if file.endswith('.txt'):
                     namefile_txt = os.path.join(root, file)
                     detect_diameter(namefile_txt, number)
@@ -139,9 +143,6 @@ if st.button("Run YOLOv5 Detection"):
                     st.title(namefile_txt)
                     st.text(file_contents)
         
-                if (file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg')):
-                    namefile_img = os.path.join(root, file)
-                    st.image(namefile_img, caption='Image detected')
         if np.isnan(D_core):
             st.write(
                 "Please reformat the scale bar on the image by using the paint app or Paint 3D to redraw the scale bar so that the length remains the same and the width increases 2-3 times.")
