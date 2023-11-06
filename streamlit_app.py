@@ -125,7 +125,7 @@ if st.button("Run YOLOv5 Detection"):
         time.sleep(7)
         
         for root, dirs, files in os.walk(get_detection_folder()):
-            st.write(root, dirs, files)
+            # st.write(root, dirs, files)
             for file in files:
                 if file.endswith('.txt'):
                     namefile_txt = os.path.join(root, file)
@@ -136,7 +136,7 @@ if st.button("Run YOLOv5 Detection"):
                     with open(namefile_txt, 'r') as file:
                         file_contents = file.read()
                     # Hiển thị nội dung file trong ứng dụng Streamlit
-                    st.title('Nội dung file .txt')
+                    st.title(namefile_txt)
                     st.text(file_contents)
         
                 if (file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg')):
