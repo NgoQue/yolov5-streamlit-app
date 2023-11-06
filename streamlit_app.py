@@ -144,14 +144,14 @@ if st.button("Run YOLOv5 Detection"):
                 # Tạo biểu đồ histogram core
                 st.write("Diameter core is:", D_core)
                 plt.figure(dpi=300)
-                plt.hist(diameter_core, bins=10, color='b', alpha=0.7)
+                plt.hist(diameter_core1, bins=10, color='b', alpha=0.7)
                 plt.ylabel('Frequency')
                 plt.xlabel('Partical Diameter')
                 plt.title('Histogram core')
                 st.pyplot(plt)
             with col2:
                 st.subheader("Diameter core")
-                data = pd.DataFrame(({"Diameter_core": diameter_core[:]}))
+                data = pd.DataFrame(({"Diameter_core1": diameter_core[:]}))
                 st.dataframe(data, height=300, width=200)
         
         if not np.isnan(D_shell):
