@@ -132,7 +132,7 @@ if st.button("Run YOLOv5 Detection"):
                     detect_diameter(namefile_txt, number)
         
         if np.isnan(D_core):
-            st.write(
+            # st.write(
                 # "Please reformat the scale bar on the image by using the paint app or Paint 3D to redraw the scale bar so that the length remains the same and the width increases 2-3 times.")
                 continue
         else:
