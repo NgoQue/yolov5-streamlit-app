@@ -146,6 +146,9 @@ if st.button("Run YOLOv5 Detection"):
                 plt.title('Histogram core')
                 st.pyplot(plt)
                 # Tạo biểu đồ histogram shell
+        if np.isnan(D_core):
+            continue
+        else:
                 st.write("Diameter shell is:", D_shell)
                 plt.figure(dpi=300)
                 plt.hist(diameter_shell, bins=10, color='g', alpha=0.7)
