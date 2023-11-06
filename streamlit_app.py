@@ -99,12 +99,6 @@ def detect_diameter(namefile_txt, num_values):
 
     if (len(diameter_core) > 0):
         D_core = np.mean(diameter_core)
-        '''
-        for i in range(0, len(diameter_core)):
-            if diameter_core[i] < D_core*(2/3):
-                diameter_core1 = diameter_core1 + [diameter_core[i]]
-        D_core = np.mean(diameter_core1)
-        '''
     else:
         D_core = np.NaN
         
