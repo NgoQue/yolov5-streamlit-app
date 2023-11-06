@@ -110,6 +110,10 @@ def detect_diameter(namefile_txt, num_values):
         D_shell = np.mean(diameter_shell1)
     else:
         D_shell = np.NaN
+
+    if (len(diameter_core1/diameter_core2<1/2):
+        D_core = np.NaN
+        
         
  # ------------------------------# run detect.py in yolov5----------------------------------------
 st.title('YOLOv5 Streamlit App')
