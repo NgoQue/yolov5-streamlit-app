@@ -131,6 +131,13 @@ if st.button("Run YOLOv5 Detection"):
                     namefile_txt = os.path.join(root, file)
                     detect_diameter(namefile_txt, number)
                     st.write("Diameter core is:", D_core)
+
+                    # Mở file .txt và đọc nội dung
+                    with open('namefile_txt', 'r') as file:
+                        file_contents = file.read()
+                    # Hiển thị nội dung file trong ứng dụng Streamlit
+                    st.title('Nội dung file .txt')
+                    st.text(file_contents)
         
                 if (file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg')):
                     namefile_img = os.path.join(root, file)
