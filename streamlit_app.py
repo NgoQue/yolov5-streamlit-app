@@ -111,7 +111,7 @@ def detect_diameter(namefile_txt, num_values):
     else:
         D_shell = np.NaN
 
-    if (len(diameter_core1/diameter_core2<1/2):
+    if (len(diameter_core1)/len(diameter_core2))<(1/2):
         D_core = np.NaN
         
         
