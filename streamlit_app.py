@@ -130,25 +130,28 @@ if st.button("Run YOLOv5 Detection"):
                 if file.endswith('.txt'):
                     namefile_txt = os.path.join(root, file)
                     detect_diameter(namefile_txt, number)
-                    st.write("Diameter core is:", D_core)
         
         if np.isnan(D_core):
             st.write(
-                "Please reformat the scale bar on the image by using the paint app or Paint 3D to redraw the scale bar so that the length remains the same and the width increases 2-3 times.")
+                # "Please reformat the scale bar on the image by using the paint app or Paint 3D to redraw the scale bar so that the length remains the same and the width increases 2-3 times.")
+                continue
         else:
             col1, col2 = st.columns([3, 1])
             with col1:
                 # Tạo biểu đồ histogram core
+                st.write("Diameter core is:", D_core)
                 plt.figure(dpi=300)
                 plt.hist(diameter_core, bins=10, color='b', alpha=0.7)
                 plt.ylabel('Frequency')
                 plt.xlabel('Partical Diameter')
                 plt.title('Histogram core')
                 st.pyplot(plt)
-                # Tạo biểu đồ histogram shell
+        
         if np.isnan(D_core):
             continue
         else:
+            with col1:
+                # Tạo biểu đồ histogram shell
                 st.write("Diameter shell is:", D_shell)
                 plt.figure(dpi=300)
                 plt.hist(diameter_shell, bins=10, color='g', alpha=0.7)
