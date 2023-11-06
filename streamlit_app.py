@@ -120,7 +120,7 @@ if st.button("Run YOLOv5 Detection"):
         parser.add_argument('--save-txt', action='store_true', help='save results to *.txt')
         parser.set_defaults(save_txt=True)
         opt = parser.parse_args()
-        st.write(opt)
+        # st.write(opt)
         detect(opt)
         time.sleep(7)
         
@@ -135,13 +135,6 @@ if st.button("Run YOLOv5 Detection"):
                     namefile_txt = os.path.join(root, file)
                     detect_diameter(namefile_txt, number)
                     st.write("Diameter core is:", D_core)
-
-                    # Mở file .txt và đọc nội dung
-                    with open(namefile_txt, 'r') as file:
-                        file_contents = file.read()
-                    # Hiển thị nội dung file trong ứng dụng Streamlit
-                    st.title(namefile_txt)
-                    st.text(file_contents)
         
         if np.isnan(D_core):
             st.write(
