@@ -59,7 +59,7 @@ diameter_shell = []
 diameter_core1 = []
 diameter_shell1 = []
 def detect_diameter(namefile_txt, num_values):
-    global D_core, D_shell, diameter_core, diameter_shell
+    global D_core, D_shell, diameter_core, diameter_shell, diameter_core1, diameter_shell1
     # read file .txt
     annotation = pd.read_csv(namefile_txt, delimiter=' ', header=None,
                              names=['label', 'x_center', 'y_center', 'width', 'height'])
