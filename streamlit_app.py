@@ -97,8 +97,6 @@ def detect_diameter(namefile_txt, num_values):
             if diameter_core[i] < min(diameter_shell):
                 diameter_core1 = diameter_core1 + [diameter_core[i]]
         D_core = np.mean(diameter_core1)
-    if (len(diameter_core) > 0):
-        D_core = np.mean(diameter_core)
     else:
         D_core = np.NaN
 
@@ -107,8 +105,6 @@ def detect_diameter(namefile_txt, num_values):
             if diameter_shell[i] > max(diameter_core):
                 diameter_shell1 = diameter_shell1 + [diameter_shell[i]]
         D_shell = np.mean(diameter_shell1)
-    if (len(diameter_shell) > 0):
-        D_shell = np.mean(diameter_shell)
     else:
         D_shell = np.NaN
         
@@ -165,7 +161,7 @@ if st.button("Run YOLOv5 Detection"):
                 # Tạo biểu đồ histogram shell
                 st.write("Diameter shell is:", D_shell)
                 plt.figure(dpi=300)
-                plt.hist(diameter_shell, bins=10, color='g', alpha=0.7)
+                plt.hist(diameter_shell1, bins=10, color='g', alpha=0.7)
                 plt.ylabel('Frequency')
                 plt.xlabel('Partical Diameter')
                 plt.title('Histogram shell')
@@ -173,7 +169,7 @@ if st.button("Run YOLOv5 Detection"):
         
             with col2:
                 st.subheader("Diameter shell")
-                data = pd.DataFrame(({'Diameter_shell': diameter_shell[:]}))
+                data = pd.DataFrame(({'Diameter_shell1': diameter_shell[:]}))
                 st.dataframe(data, height=300, width=200)
         
         # Xóa tệp hình ảnh tạm thời
