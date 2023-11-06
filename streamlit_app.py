@@ -130,9 +130,9 @@ if st.button("Run YOLOv5 Detection"):
                 if file.endswith('.txt'):
                     namefile_txt = os.path.join(root, file)
                     detect_diameter(namefile_txt, number)
-        
+                    
+        col1, col2 = st.columns([3, 1])
         if not np.isnan(D_core):
-            col1, col2 = st.columns([3, 1])
             with col1:
                 # Tạo biểu đồ histogram core
                 st.write("Diameter core is:", D_core)
@@ -142,6 +142,10 @@ if st.button("Run YOLOv5 Detection"):
                 plt.xlabel('Partical Diameter')
                 plt.title('Histogram core')
                 st.pyplot(plt)
+            with col2:
+                st.subheader("Diameter core")
+                data = pd.DataFrame(({"Diameter_core": diameter_core[:]}))
+                st.dataframe(data, height=300, width=200)
         
         if not np.isnan(D_shell):
             with col1:
@@ -155,10 +159,6 @@ if st.button("Run YOLOv5 Detection"):
                 st.pyplot(plt)
         
             with col2:
-                st.subheader("Diameter core")
-                data = pd.DataFrame(({"Diameter_core": diameter_core[:]}))
-                st.dataframe(data, height=300, width=200)
-        
                 st.subheader("Diameter shell")
                 data = pd.DataFrame(({'Diameter_shell': diameter_shell[:]}))
                 st.dataframe(data, height=300, width=200)
