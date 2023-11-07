@@ -92,7 +92,7 @@ def detect_diameter(namefile_txt, num_values):
     diameter_core = np.array(diameter_core)
     diameter_shell = np.array(diameter_shell)
 
-    mean_shell = mean(diameter_shell)
+    mean_shell = np.mean(diameter_shell)
     if (len(diameter_core) > 0):
         for i in range(0, len(diameter_core)):
             if len(diameter_shell)==0:
