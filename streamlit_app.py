@@ -93,13 +93,15 @@ def detect_diameter(namefile_txt, num_values):
     diameter_shell = np.array(diameter_shell)
 
     mean_shell = np.mean(diameter_shell)
+    mean_core = np.mean(diameter_core)
+    
     if (len(diameter_core) > 0):
         for i in range(0, len(diameter_core)):
             if len(diameter_shell)==0:
                 diameter_core1 = diameter_core
                 break
             # if diameter_core[i] < min(diameter_shell):
-            if diameter_core[i] < mean_shell:
+            if diameter_core[i] < 2*mean_core:
                 diameter_core1 = diameter_core1 + [diameter_core[i]]
         D_core = np.mean(diameter_core1)
     else:
@@ -110,7 +112,7 @@ def detect_diameter(namefile_txt, num_values):
             if np.isnan(D_core):
                 diameter_shell1 = diameter_shell
                 break
-            if diameter_shell[i] > D_core:
+            if diameter_shell[i] > D_core and diameter_shell[i]<2*mean_shell:
                 diameter_shell1 = diameter_shell1 + [diameter_shell[i]]
         D_shell = np.mean(diameter_shell1)
     else:
