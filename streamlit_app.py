@@ -120,7 +120,7 @@ def detect_diameter(namefile_txt, num_values):
         D_shell = np.NaN  
 
     if not np.isnan(D_core) and not np.isnan(D_shell) :
-        if ((len(diameter_core1)/len(diameter_shell1))<(2/10) ):
+        if ((len(diameter_core1)/len(diameter_shell1))<(1/3) ):
             D_core = np.NaN
         
  # ------------------------------# run detect.py in yolov5----------------------------------------
