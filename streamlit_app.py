@@ -29,6 +29,7 @@ if uploaded_file is not None:
 
         #resize image
         image = Image.open(uploaded_file)
+        image = image.convert('RGB')
         width, height = image.size
         new_width = int((width / height) * 640)
         image = image.resize((new_width, 640))
