@@ -164,31 +164,31 @@ if st.button("Run YOLOv5 Detection"):
         if not np.isnan(D_core):
             with col1:
                 # Tạo biểu đồ histogram core
-                st.write("Diameter core is:", D_core)
+                st.write("Core diameter is:", D_core)
                 plt.figure(dpi=300)
                 plt.hist(diameter_core1, bins=10, color='b', alpha=0.7)
                 plt.ylabel('Frequency')
                 plt.xlabel('Partical Diameter')
-                plt.title('Histogram core')
+                plt.title('Core diameter distribution')
                 st.pyplot(plt)
             with col2:
-                st.subheader("Diameter core")
-                data = pd.DataFrame(({"Core diameter distribution": diameter_core1[:]}))
+                st.subheader("Core diameter")
+                data = pd.DataFrame(({"Core diameter ": diameter_core1[:]}))
                 st.dataframe(data, height=370, width=200)
         
         if not np.isnan(D_shell):
             with col1:
                 # Tạo biểu đồ histogram shell
-                st.write("Diameter shell is:", D_shell)
+                st.write("Shell diameter is:", D_shell)
                 plt.figure(dpi=300)
                 plt.hist(diameter_shell1, bins=10, color='g', alpha=0.7)
                 plt.ylabel('Frequency')
                 plt.xlabel('Partical Diameter')
-                plt.title('Histogram shell')
+                plt.title('Shell diameter distribution')
                 st.pyplot(plt)
         
             with col2:
-                st.subheader("Shell diameter distribution")
+                st.subheader("Shell diameter")
                 data = pd.DataFrame(({'Diameter_shell': diameter_shell1[:]}))
                 st.dataframe(data, height=370, width=200)
         
