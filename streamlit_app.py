@@ -168,7 +168,7 @@ if st.button("Run YOLOv5 Detection"):
                 plt.figure(dpi=300)
                 plt.hist(diameter_core1, bins=10, color='b', alpha=0.7)
                 plt.ylabel('Frequency')
-                plt.xlabel('Partical Diameter')
+                plt.xlabel('Size')
                 plt.title('Core diameter distribution')
                 st.pyplot(plt)
             with col2:
@@ -183,7 +183,7 @@ if st.button("Run YOLOv5 Detection"):
                 plt.figure(dpi=300)
                 plt.hist(diameter_shell1, bins=10, color='g', alpha=0.7)
                 plt.ylabel('Frequency')
-                plt.xlabel('Partical Diameter')
+                plt.xlabel('Size')
                 plt.title('Shell diameter distribution')
                 st.pyplot(plt)
         
