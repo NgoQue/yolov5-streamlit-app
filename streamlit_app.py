@@ -172,8 +172,8 @@ if st.button("Run YOLOv5 Detection"):
                 plt.title('Core diameter distribution')
                 st.pyplot(plt)
             with col2:
-                st.subheader("Core diameter")
-                data = pd.DataFrame(({"Core": diameter_core1[:]}))
+                st.subheader("Core")
+                data = pd.DataFrame(({"Diameter_core": diameter_core1[:]}))
                 st.dataframe(data, height=370, width=200)
         
         if not np.isnan(D_shell):
