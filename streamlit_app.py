@@ -64,8 +64,9 @@ diameter_core = []
 diameter_shell = []
 diameter_core1 = []
 diameter_shell1 = []
+scale_bar
 def detect_diameter(namefile_txt, num_values):
-    global D_core, D_shell, diameter_core, diameter_shell, diameter_core1, diameter_shell1
+    global D_core, D_shell, diameter_core, diameter_shell, diameter_core1, diameter_shell1, scale_bar
     # read file .txt
     annotation = pd.read_csv(namefile_txt, delimiter=' ', header=None,
                              names=['label', 'x_center', 'y_center', 'width', 'height'])
@@ -164,6 +165,35 @@ if st.button("Run YOLOv5 Detection"):
                 if file.endswith('.txt'):
                     namefile_txt = os.path.join(root, file)
                     detect_diameter(namefile_txt, number)
+            #-------------------------------------#
+        if(scale_bar!=1):
+            break
+        if(scale_bar==1):
+            for i in range(0.7, 1, 0.05):
+                brightness_factor = 0.7  # Điều chỉnh giá trị để thay đổi độ sáng
+                enhancer = ImageEnhance.Brightness(image)
+                image = enhancer.enhance(brightness_factor)
+                image = image.save(f'images/{uploaded_file.name}')
+
+                int_image_path = f'images/{uploaded_file.name}'
+                path_detect_py = 'yolov5/detect.py'
+                path_weight = "yolov5/runs/train/exp/weights/best.pt"
+                
+                detect(opt)
+                time.sleep(7)
+                
+                for root, dirs, files in os.walk(get_detection_folder()):
+                    # st.write(root, dirs, files)
+                    for file in files:
+                        if (file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg')):
+                            namefile_img = os.path.join(root, file)
+                            st.image(namefile_img, caption='Image detected')
+
+                        if file.endswith('.txt'):
+                            namefile_txt = os.path.join(root, file)
+                            detect_diameter(namefile_txt, number)
+                if(scaler_bar!=1): break
+        #-----------------------------------------#
                     
         col1, col2 = st.columns([3, 1])
         if not np.isnan(D_core):
