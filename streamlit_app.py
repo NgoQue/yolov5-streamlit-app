@@ -64,7 +64,6 @@ diameter_core = []
 diameter_shell = []
 diameter_core1 = []
 diameter_shell1 = []
-scale_bar
 def detect_diameter(namefile_txt, num_values):
     global D_core, D_shell, diameter_core, diameter_shell, diameter_core1, diameter_shell1, scale_bar
     # read file .txt
