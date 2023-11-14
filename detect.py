@@ -34,7 +34,7 @@ def detect(source):
     view_img=False  # show results
     save_txt=True  # save results to *.txt
     save_csv=False # save results in CSV format
-    save_conf=False  # save confidences in --save-txt labels
+    save_conf=True  # save confidences in --save-txt labels
     save_crop=False # save cropped prediction boxes
     nosave=False  # do not save images/videos
     classes=None  # filter by class: --class 0, or --class 0 2 3
@@ -46,8 +46,8 @@ def detect(source):
     name='exp'  # save results to project/name
     exist_ok=False  # existing project/name ok, do not increment
     line_thickness=1 # bounding box thickness (pixels)
-    hide_labels=False  # hide labels
-    hide_conf=False  # hide confidences
+    hide_labels=True  # hide labels
+    hide_conf=True  # hide confidences
     half=False  # use FP16 half-precision inference
     dnn=False  # use OpenCV DNN for ONNX inference
     vid_stride=1  # video frame-rate stride
