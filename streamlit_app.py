@@ -74,11 +74,15 @@ def detect_diameter(namefile_txt, num_values):
     width = annotation['width']
     height = annotation['height']
     conf = annotation['conf']
-    scale_bar = 1
+    arr_scale_bar = []
+    arr_conf = []
     # calculate diameter core shell
     for i in range(0, len(annotation)):
         if (label[i] == 2):
-            scale_bar = width[i]
+            arr_scale_bar = arr_scale_bar + [width[i]]
+            arr_conf = arr_conf + [conf[i]]
+    index_of_max_conf = arr_conf.index(max(arr_conf))
+    scale = arr_scale_bar[index_of_max_conf]
 
     for i in range(0, len(annotation)):
         if (all(label[:] != 2)):
