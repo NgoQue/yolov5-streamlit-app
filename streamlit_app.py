@@ -166,7 +166,7 @@ if st.button("Run YOLOv5 Detection"):
                     detect_diameter(namefile_txt, number)
             #-------------------------------------#
         if(scale_bar==1):
-            for i in range(0.7, 1, 0.05):
+            for i in np.arange(0.7, 1, 0.05):
                 brightness_factor = 0.7  # Điều chỉnh giá trị để thay đổi độ sáng
                 enhancer = ImageEnhance.Brightness(image)
                 image = enhancer.enhance(brightness_factor)
