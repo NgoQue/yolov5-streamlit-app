@@ -33,6 +33,8 @@ if uploaded_file is not None:
         width, height = image.size
         new_width = int((width / height) * 640)
         image = image.resize((new_width, 640))
+        alpha = 0.7  # Điều chỉnh giá trị alpha để thay đổi độ sáng
+        image = np.clip(image * alpha, 0, 255).astype(np.uint8)
         image = image.save(f'images/{uploaded_file.name}')
         # int_image_path = f'images/{uploaded_file.name}'
 else:
