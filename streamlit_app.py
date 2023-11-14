@@ -91,14 +91,14 @@ def detect_diameter(namefile_txt, num_values):
         if (min(width[i], height[i]) / max(width[i], height[i]) >= 4/5):
             if (label[i] == 0 and conf[i]>0.6):
                 diameter_core = diameter_core + [((width[i] + height[i]) / (2*scale_bar))*num_values]
-            if (label[i] == 1 and conf[i]>0.6):
+            if (label[i] == 1 and conf[i]>0.5):
                 diameter_shell = diameter_shell + [((width[i] + height[i]) / (2*scale_bar))*num_values]
 
         else:
         # if (min(width[i], height[i]) / max(width[i], height[i]) < 3 / 5):
             if (label[i] == 0 and conf[i]>0.6):
                 diameter_core = diameter_core + [(max(width[i], height[i]) / (scale_bar))*num_values]
-            if (label[i] == 1 and conf[i]>0.6):
+            if (label[i] == 1 and conf[i]>0.5):
                 diameter_shell = diameter_shell + [(max(width[i], height[i]) / (scale_bar))*num_values]
 
     diameter_core = np.array(diameter_core)
