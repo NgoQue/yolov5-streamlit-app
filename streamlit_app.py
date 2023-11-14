@@ -107,8 +107,8 @@ def detect_diameter(namefile_txt, num_values):
             if len(diameter_shell)==0:
                 diameter_core1 = diameter_core
                 break
-            if diameter_core[i] < min(diameter_shell):
-            # if diameter_core[i] < 1.25*mean_core:
+            # if diameter_core[i] < min(diameter_shell):
+            if diameter_core[i] < 1.2*mean_core:
                 diameter_core1 = diameter_core1 + [diameter_core[i]]
         D_core = np.mean(diameter_core1)
     else:
