@@ -69,10 +69,11 @@ def detect_diameter(namefile_txt, num_values):
     global D_core, D_shell, diameter_core, diameter_shell, diameter_core1, diameter_shell1
     # read file .txt
     annotation = pd.read_csv(namefile_txt, delimiter=' ', header=None,
-                             names=['label', 'x_center', 'y_center', 'width', 'height'])
+                             names=['label', 'x_center', 'y_center', 'width', 'height', 'conf'])
     label = annotation["label"]
     width = annotation['width']
     height = annotation['height']
+    conf = annotation['conf']
     scale_bar = 1.0
     # calculate diameter core shell
     for i in range(0, len(annotation)):
@@ -84,16 +85,16 @@ def detect_diameter(namefile_txt, num_values):
             break
 
         if (min(width[i], height[i]) / max(width[i], height[i]) >= 4/5):
-            if (label[i] == 0):
+            if (label[i] == 0 and conf[i]>0.6):
                 diameter_core = diameter_core + [((width[i] + height[i]) / (2*scale_bar))*num_values]
-            if (label[i] == 1):
+            if (label[i] == 1 and conf[i]>0.6):
                 diameter_shell = diameter_shell + [((width[i] + height[i]) / (2*scale_bar))*num_values]
 
         else:
         # if (min(width[i], height[i]) / max(width[i], height[i]) < 3 / 5):
-            if (label[i] == 0):
+            if (label[i] == 0 and conf[i]>0.6):
                 diameter_core = diameter_core + [(max(width[i], height[i]) / (scale_bar))*num_values]
-            if (label[i] == 1):
+            if (label[i] == 1 and conf[i]>0.6):
                 diameter_shell = diameter_shell + [(max(width[i], height[i]) / (scale_bar))*num_values]
 
     diameter_core = np.array(diameter_core)
