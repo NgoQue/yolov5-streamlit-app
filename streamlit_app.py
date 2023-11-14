@@ -84,7 +84,8 @@ def detect_diameter(namefile_txt, num_values):
     if len(arr_scale_bar)>0:
         index_of_max_conf = arr_conf.index(max(arr_conf))
         scale_bar = arr_scale_bar[index_of_max_conf]
-    else: break
+    else: 
+        break
 
     for i in range(0, len(annotation)):
         if (min(width[i], height[i]) / max(width[i], height[i]) >= 4/5):
