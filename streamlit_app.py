@@ -74,7 +74,7 @@ def detect_diameter(namefile_txt, num_values):
     width = annotation['width']
     height = annotation['height']
     conf = annotation['conf']
-    scale_bar = 1.0
+    scale_bar = 1
     # calculate diameter core shell
     for i in range(0, len(annotation)):
         if (label[i] == 2):
@@ -85,16 +85,16 @@ def detect_diameter(namefile_txt, num_values):
             break
 
         if (min(width[i], height[i]) / max(width[i], height[i]) >= 4/5):
-            if (label[i] == 0 and conf[i]>0.5):
+            if (label[i] == 0 and conf[i]>0.65):
                 diameter_core = diameter_core + [((width[i] + height[i]) / (2*scale_bar))*num_values]
             if (label[i] == 1 and conf[i]>0.65):
                 diameter_shell = diameter_shell + [((width[i] + height[i]) / (2*scale_bar))*num_values]
 
         else:
         # if (min(width[i], height[i]) / max(width[i], height[i]) < 3 / 5):
-            if (label[i] == 0 and conf[i]>0.6):
+            if (label[i] == 0 and conf[i]>0.65):
                 diameter_core = diameter_core + [(max(width[i], height[i]) / (scale_bar))*num_values]
-            if (label[i] == 1 and conf[i]>0.6):
+            if (label[i] == 1 and conf[i]>0.65):
                 diameter_shell = diameter_shell + [(max(width[i], height[i]) / (scale_bar))*num_values]
 
     diameter_core = np.array(diameter_core)
