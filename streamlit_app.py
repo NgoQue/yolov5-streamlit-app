@@ -34,8 +34,9 @@ if uploaded_file is not None:
         new_width = int((width / height) * 640)
         image = image.resize((new_width, 640))
 
-        # brightness_factor = 0.7  # Điều chỉnh thay đổi độ sáng
-        brightness_factor = np.random.uniform(0.65, 0.8)
+        
+        # Điều chỉnh thay đổi độ sáng
+        brightness_factor = np.random.uniform(0.7, 0.9)
         enhancer = ImageEnhance.Brightness(image)
         image = enhancer.enhance(brightness_factor)
 
