@@ -42,7 +42,7 @@ if uploaded_file is not None:
 
         red, green, blue = image.split() # change warmth
         red_enhancer = ImageEnhance.Brightness(red)
-        red_adjusted = red_enhancer.enhance(1.22)
+        red_adjusted = red_enhancer.enhance(1.2)
         image = Image.merge("RGB", (red_adjusted, green, blue))
         image.show(title='Brightened Image')
         image = image.save(f'images/{uploaded_file.name}')
