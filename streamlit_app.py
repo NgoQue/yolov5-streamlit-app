@@ -34,13 +34,17 @@ if uploaded_file is not None:
         new_width = int((width / height) * 640)
         image = image.resize((new_width, 640))
 
-        # brightness_factor = 0.7  # Điều chỉnh giá trị để thay đổi độ sáng
+        # brightness_factor = 0.7  # Điều chỉnh thay đổi độ sáng
         brightness_factor = np.random.uniform(0.65, 0.8)
         enhancer = ImageEnhance.Brightness(image)
         image = enhancer.enhance(brightness_factor)
-        
+
+        red, green, blue = image.split() # change warmth
+        red_enhancer = ImageEnhance.Brightness(red)
+        red_adjusted = red_enhancer.enhance(1.22)
+        image = Image.merge("RGB", (red_adjusted, green, blue))
+        image.show(title='Brightened Image')
         image = image.save(f'images/{uploaded_file.name}')
-        # int_image_path = f'images/{uploaded_file.name}'
 else:
     st.error("Please upload a file")
 
