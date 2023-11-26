@@ -326,6 +326,6 @@ if st.button("Run YOLOv5 Detection"):
                 st.dataframe(data, height=370, width=200)
 
         # -----------------Xóa tệp hình ảnh tạm thời---------------------------
-            shutil.rmtree('yolov5/runs/detect')
-            shutil.rmtree('images')
+        shutil.rmtree('yolov5/runs/detect')
+        shutil.rmtree('images')
                 
