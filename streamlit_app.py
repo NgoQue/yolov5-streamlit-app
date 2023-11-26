@@ -228,7 +228,7 @@ if st.button("Run YOLOv5 Detection"):
                 st.subheader("Shell")
                 data = pd.DataFrame(({'Diameter_shell': diameter_shell1[:]}))
                 st.dataframe(data, height=370, width=200)
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------------------------------------------------------------------#
         if material_shell is not None and material_core is not None:
             # -------------------------Dielectric funtion core---------------------------------------------
             dielectric_core = pd.read_csv(f'Data_dielectric_function/{material_core}.csv', delimiter=',')
@@ -288,13 +288,15 @@ if st.button("Run YOLOv5 Detection"):
               kShell = kShell + [result]
             nShell = np.array(nShell)
             kShell = np.array(kShell)
-            
+            #------------------------------------------------------------------
             m_core = nCore + 1.0j * kCore
             m_shell = nShell + 1.0j * kShell
             if np.isnan(D_core) and not np.isnan(D_shell): 
                 D_core=0
+                m_core = m_shell
             if not np.isnan(D_core) and np.isnan(D_shell): 
                 D_shell=D_core
+                m_shell = m_shell
             #---------------- caculate #qext, qsca, qabs, g, qpr, qback, qratio-----------------------------
             scattering_cross_sections = []
             for wavelength, mcore, mshell in zip(wavelengths, m_core, m_shell):
