@@ -304,7 +304,7 @@ if st.button("Run YOLOv5 Detection"):
             scattering_cross_sections = np.array(scattering_cross_sections)
             with col1:
                 column_0 = scattering_cross_sections[:, 0]
-                plt.plot( wavelengths,column_0, label='qext', linestyle='--', color = 'b')
+                plt.plot( wavelengths,column_0, label='qext', linestyle='-', color = 'b')
                 
                 column_1 = scattering_cross_sections[:, 1]
                 plt.plot( wavelengths,column_1, label='qsca', color = 'r')
