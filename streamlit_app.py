@@ -51,6 +51,21 @@ else:
 
 number = st.sidebar.number_input('Enter the value of scale bar into the box below.')
 st.sidebar.write('The current number is ', number)
+
+material_core = st.radio(
+    "Select material_core",
+    ['Au', 'Ag', 'Al', 'Al2O3', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Pb', 'Pt', 'SiO2', 'TiO2', 'ZnO'],
+    index=None,
+)
+st.write("You selected:", material_core)
+
+material_shell = st.radio(
+    "Select material_core",
+    ['Au', 'Ag', 'Al', 'Al2O3', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Pb', 'Pt', 'SiO2', 'TiO2', 'ZnO'],
+    index=None,
+)
+st.write("You selected:", material_shell)
+
  #-----------------------funtions-------------------------#
 #  return all folder in path
 def get_subdirs(b='.'):
