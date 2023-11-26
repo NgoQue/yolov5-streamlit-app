@@ -233,7 +233,7 @@ def linear_interpolation(min_x, max_x, x_data, y_data, x_interpolate):
     y_interpolate = coefficients(x_interpolate)# Tính giá trị nội suy
     return y_interpolate
 # if(not np.isnan(D_shell) or np.isnan(D_shell)) and (not np.isnan(D_core) or np.isnan(D_core) and (not np.isnan(material_shell)) and (not np.isnan(material_core)):
-if (not np.isnan(material_shell)) and (not np.isnan(material_core)):
+if material_shell is not None and material_core is not None:
     # -------------------------Dielectric funtion core---------------------------------------------
     dielectric_core = pd.read_csv(f'Data_dielectric_function/{material_core}.csv', delimiter=',')
     lamda_core = dielectric_core['wl']
