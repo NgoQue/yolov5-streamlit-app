@@ -11,6 +11,8 @@ from detect import detect
 import sys
 import argparse
 import time
+from PyMieScatt import MieQCoreShell 
+from scipy import interpolate
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
