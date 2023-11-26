@@ -230,10 +230,6 @@ if st.button("Run YOLOv5 Detection"):
                 st.dataframe(data, height=370, width=200)
 #-------------------------------------------------------------------------------------------------#
         if material_shell is not None and material_core is not None:
-            if np.isnan(D_core) and not np.isnan(D_shell): 
-                D_core=0
-            if not np.isnan(D_core) and np.isnan(D_shell): 
-                D_shell=D_core
             # -------------------------Dielectric funtion core---------------------------------------------
             dielectric_core = pd.read_csv(f'Data_dielectric_function/{material_core}.csv', delimiter=',')
             lamda_core = dielectric_core['wl']
@@ -295,6 +291,10 @@ if st.button("Run YOLOv5 Detection"):
             
             m_core = nCore + 1.0j * kCore
             m_shell = nShell + 1.0j * kShell
+            if np.isnan(D_core) and not np.isnan(D_shell): 
+                D_core=0
+            if not np.isnan(D_core) and np.isnan(D_shell): 
+                D_shell=D_core
             #---------------- caculate #qext, qsca, qabs, g, qpr, qback, qratio-----------------------------
             scattering_cross_sections = []
             for wavelength, mcore, mshell in zip(wavelengths, m_core, m_shell):
