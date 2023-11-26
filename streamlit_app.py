@@ -310,12 +310,12 @@ if st.button("Run YOLOv5 Detection"):
                 column_2 = scattering_cross_sections[:, 2]
                 ax.plot( wavelengths,column_0, label='qabs', color = 'g')
                 
-                ax.ylim(min(scattering_cross_sections[:, 0]), max(scattering_cross_sections[:, 0]))
-                ax.xlim(200, 1000)
-                ax.title('Light scattering cross section')
-                ax.xlabel('wavelength')
-                ax.ylabel('efficiencies')
-                ax.legend()
+                ax.set_ylim(min(scattering_cross_sections[:, 0]), max(scattering_cross_sections[:, 0]))
+                ax.set_xlim(200, 1000)
+                ax.set_title('Light scattering cross section')
+                ax.set_xlabel('wavelength')
+                ax.set_ylabel('efficiencies')
+                ax.set_legend()
                 ax.pyplot(plt)
             with col2:
                 st.write("Light scattering by a sphere")
