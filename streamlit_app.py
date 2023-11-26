@@ -318,7 +318,7 @@ if st.button("Run YOLOv5 Detection"):
                 ax.plot( wavelengths,column_0, label='qabs', color = 'g')
 
                 ax.set_xlim(200, 1000)
-                ax.set_ylim(min(scattering_cross_sections[:, 0]), max(scattering_cross_sections[:, 0]))
+                ax.set_ylim(np.amin(scattering_cross_sections[:, 0:3]), np.amax(scattering_cross_sections[:, 0:3]))
                 ax.set_title('Light scattering cross section')
                 ax.set_xlabel('wavelength')
                 ax.set_ylabel('efficiencies')
