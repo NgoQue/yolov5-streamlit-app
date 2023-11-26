@@ -318,7 +318,8 @@ if st.button("Run YOLOv5 Detection"):
                 st.pyplot(plt)
             with col2:
                 st.write("Light scattering by a sphere")
-                data = pd.DataFrame({'qext': scattering_cross_sections[:, 0],
+                data = pd.DataFrame({'wl': wavelength,
+                     'qext': scattering_cross_sections[:, 0],
                      'qsca': scattering_cross_sections[:, 1],
                      'qabs': scattering_cross_sections[:, 2]})
                 st.dataframe(data, height=370, width=200)
