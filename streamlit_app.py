@@ -221,4 +221,96 @@ if st.button("Run YOLOv5 Detection"):
         # os.remove(int_image_path)
         shutil.rmtree('yolov5/runs/detect')
         shutil.rmtree('images')
+#-------------------------------------------------------------------------------------------------#
+def linear_interpolation(min_x, max_x, x_data, y_data, x_interpolate):
+    if x_interpolate < min_x or x_interpolate > max_x:
+        return 0 
 
+    coefficients = interpolate.interp1d(x_data, y_data, kind='cubic')
+    y_interpolate = coefficients(x_interpolate)# Tính giá trị nội suy
+    return y_interpolate
+    
+# -------------------------Dielectric funtion core---------------------------------------------
+dielectric_core = pd.read_csv(f'Data_dielectric_function/{material_core}.csv', delimiter=',')
+lamda_core = dielectric_core['wl']
+lamda_core = (lamda_core.values)*1000
+
+n_core = dielectric_core['n']
+n_core = n_core.values
+
+column = 'k'
+if column in dielectric_core.columns:
+    k_core = dielectric_core['k']
+    k_core = k_core.values
+else:
+    dielectric_core['k'] = 0
+    k_core = dielectric_core['k']
+    k_core = k_core.values
+    
+# -------------------------Dielectric funtion shell-----------------------------
+dielectric_shell = pd.read_csv(f'Data_dielectric_function/{material_shell}.csv', delimiter=',')
+lamda_shell = dielectric_shell['wl']
+lamda_shell = (lamda_shell.values)*1000
+
+n_shell = dielectric_shell['n']
+n_shell = n_shell.values
+
+column = 'k'
+if column in dielectric_shell.columns:
+    k_shell = dielectric_shell['k']
+    k_shell = k_shell.values
+else:
+    dielectric_shell['k'] = 0
+    k_shell = dielectric_shell['k']
+    k_shell = k_shell.values
+#-------------------------------#
+min_x = max(lamda_core[0], lamda_shell[0])
+max_x = min(lamda_core[-1], lamda_shell[-1])
+wavelengths = np.linspace(min_x, max_x, 200)
+
+nCore = []
+kCore = []
+for x in wavelengths:
+  result = linear_interpolation(min_x, max_x,lamda_core, n_core, x)
+  nCore = nCore + [result]
+for x in wavelengths:
+  result = linear_interpolation(min_x, max_x,lamda_core, k_core, x)
+  kCore = kCore + [result]
+nCore = np.array(nCore)
+kCore = np.array(kCore)
+
+nShell = []
+kShell = []
+for x in wavelengths:
+  result = linear_interpolation(min_x, max_x,lamda_shell, n_shell, x)
+  nShell = nShell + [result]
+for x in wavelengths:
+  result = linear_interpolation(min_x, max_x,lamda_shell, k_shell, x)
+  kShell = kShell + [result]
+nShell = np.array(nShell)
+kShell = np.array(kShell)
+
+m_core = nCore + 1.0j * kCore
+m_shell = nShell + 1.0j * kShell
+
+scattering_cross_sections = []
+for wavelength, mcore, mshell in zip(wavelengths, m_core, m_shell):
+        mie_core_shell = MieQCoreShell(wavelength=wavelength,dCore=D_core,dShell=D_shell,mCore=mcore,mShell=mshell)
+        scattering_cross_sections.append(mie_core_shell)
+
+scattering_cross_sections = np.array(scattering_cross_sections)
+
+#qext, qsca, qabs, g, qpr, qback, qratio
+column_0 = scattering_cross_sections[:, 0]
+plt.plot( wavelengths,column_0, label='qext', linestyle='--', color = 'b')
+
+column_1 = scattering_cross_sections[:, 1]
+plt.plot( wavelengths,column_1, label='qsca', color = 'r')
+
+column_2 = scattering_cross_sections[:, 2]
+plt.plot( wavelengths,column_0, label='qabs', color = 'g')
+# plt.xlim(min_x, 1000)
+plt.xlim(200, 1000)
+plt.xlabel('wavelength')
+plt.ylabel('efficiencies')
+st.pyplot(plt)
