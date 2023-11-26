@@ -316,6 +316,7 @@ if st.button("Run YOLOv5 Detection"):
                 plt.title('Light scattering cross section')
                 plt.xlabel('wavelength')
                 plt.ylabel('efficiencies')
+                plt.legend()
                 st.pyplot(plt)
             with col2:
                 st.write("Light scattering by a sphere")
