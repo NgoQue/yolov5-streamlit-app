@@ -56,10 +56,11 @@ st.sidebar.write('The current number is ', number)
 
 material_core = st.sidebar.radio(
     "Select material_core",
-    ['Au', 'Ag', 'Al', 'Al2O3', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Pb', 'Pt', 'SiO2', 'TiO2', 'ZnO'])
+    ['Au', 'Ag', 'Al', 'Al2O3', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Pb', 'Pt', 'SiO2', 'TiO2', 'ZnO'], index=None)
+
 material_shell = st.sidebar.radio(
     "Select material_shell",
-    ['Au', 'Ag', 'Al', 'Al2O3', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Pb', 'Pt', 'SiO2', 'TiO2', 'ZnO'])
+    ['Au', 'Ag', 'Al', 'Al2O3', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Pb', 'Pt', 'SiO2', 'TiO2', 'ZnO'], index=None)
 
  #-----------------------funtions-------------------------#
 #  return all folder in path
