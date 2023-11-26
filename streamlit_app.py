@@ -316,7 +316,7 @@ if st.button("Run YOLOv5 Detection"):
                 ax.set_xlabel('wavelength')
                 ax.set_ylabel('efficiencies')
                 ax.legend()
-                plt.pyplot(plt)
+                st.pyplot(plt)
             with col2:
                 st.write("Light scattering by a sphere")
                 data = pd.DataFrame({'wl': np.linspace(min_x, max_x, 200),
