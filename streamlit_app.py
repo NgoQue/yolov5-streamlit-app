@@ -228,6 +228,10 @@ if st.button("Run YOLOv5 Detection"):
                 st.subheader("Shell")
                 data = pd.DataFrame(({'Diameter_shell': diameter_shell1[:]}))
                 st.dataframe(data, height=370, width=200)
+            # -----------------Xóa tệp hình ảnh tạm thời---------------------------
+        time.sleep(3)
+        shutil.rmtree('yolov5/runs/detect')
+        shutil.rmtree('images')
 #------------------------------------------------------------------------------------------------------------------------------------------------------#
         if material_shell is not None and material_core is not None:
             if np.isnan(D_core) and np.isnan(D_shell):
@@ -333,8 +337,4 @@ if st.button("Run YOLOv5 Detection"):
                      'qsca': scattering_cross_sections[:, 1],
                      'qabs': scattering_cross_sections[:, 2]})
                 st.dataframe(data, height=370, width=200)
-
-        # -----------------Xóa tệp hình ảnh tạm thời---------------------------
-        shutil.rmtree('yolov5/runs/detect')
-        shutil.rmtree('images')
                 
