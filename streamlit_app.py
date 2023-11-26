@@ -302,7 +302,7 @@ if st.button("Run YOLOv5 Detection"):
                 m_core = m_shell
             if not np.isnan(D_core) and np.isnan(D_shell): 
                 D_shell=D_core
-                m_shell = m_shell
+                m_shell = m_core
             #---------------- caculate #qext, qsca, qabs, g, qpr, qback, qratio-----------------------------
             scattering_cross_sections = []
             for wavelength, mcore, mshell in zip(wavelengths, m_core, m_shell):
