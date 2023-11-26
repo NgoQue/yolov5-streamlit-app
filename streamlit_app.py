@@ -60,7 +60,7 @@ material_core = st.radio(
 st.write("You selected:", material_core)
 
 material_shell = st.radio(
-    "Select material_core",
+    "Select material_shell",
     ['Au', 'Ag', 'Al', 'Al2O3', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Pb', 'Pt', 'SiO2', 'TiO2', 'ZnO'],
     index=None,
 )
