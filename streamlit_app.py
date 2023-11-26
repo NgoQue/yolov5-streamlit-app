@@ -226,12 +226,6 @@ if st.button("Run YOLOv5 Detection"):
                 st.subheader("Shell")
                 data = pd.DataFrame(({'Diameter_shell': diameter_shell1[:]}))
                 st.dataframe(data, height=370, width=200)
-        
-        # Xóa tệp hình ảnh tạm thời
-        time.sleep(4)
-        # os.remove(int_image_path)
-        shutil.rmtree('yolov5/runs/detect')
-        shutil.rmtree('images')
 #-------------------------------------------------------------------------------------------------#
         if material_shell is not None and material_core is not None:
             # -------------------------Dielectric funtion core---------------------------------------------
@@ -304,7 +298,7 @@ if st.button("Run YOLOv5 Detection"):
             scattering_cross_sections = np.array(scattering_cross_sections)
             with col1:
                 column_0 = scattering_cross_sections[:, 0]
-                plt.plot( wavelengths,column_0, label='qext', marker='+', color = 'b')
+                plt.plot( wavelengths,column_0, label='qext', marker='x', color = 'b')
                 
                 column_1 = scattering_cross_sections[:, 1]
                 plt.plot( wavelengths,column_1, label='qsca', color = 'r')
@@ -325,4 +319,8 @@ if st.button("Run YOLOv5 Detection"):
                      'qsca': scattering_cross_sections[:, 1],
                      'qabs': scattering_cross_sections[:, 2]})
                 st.dataframe(data, height=370, width=200)
+
+        # -----------------Xóa tệp hình ảnh tạm thời---------------------------
+            shutil.rmtree('yolov5/runs/detect')
+            shutil.rmtree('images')
                 
