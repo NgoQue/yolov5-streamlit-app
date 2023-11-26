@@ -230,6 +230,8 @@ if st.button("Run YOLOv5 Detection"):
                 st.dataframe(data, height=370, width=200)
 #-------------------------------------------------------------------------------------------------#
         if material_shell is not None and material_core is not None:
+            if not np.isnan(D_core) and np.isnan(D_shell): D_core=0
+            if np.isnan(D_core) and not np.isnan(D_shell): D_shell=D_core
             # -------------------------Dielectric funtion core---------------------------------------------
             dielectric_core = pd.read_csv(f'Data_dielectric_function/{material_core}.csv', delimiter=',')
             lamda_core = dielectric_core['wl']
