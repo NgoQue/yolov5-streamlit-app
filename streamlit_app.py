@@ -199,6 +199,7 @@ if st.button("Run YOLOv5 Detection"):
         if not np.isnan(D_core):
             with col1:
                 # Tạo biểu đồ histogram core
+                plt.figure(dpi = 300)
                 st.write("Core diameter is:", D_core)
                 plt.figure(dpi=300)
                 plt.hist(diameter_core1, bins=10, color='b', alpha=0.7)
@@ -214,6 +215,7 @@ if st.button("Run YOLOv5 Detection"):
         if not np.isnan(D_shell):
             with col1:
                 # Tạo biểu đồ histogram shell
+                plt.figure(dpi = 300)
                 st.write("Shell diameter is:", D_shell)
                 plt.figure(dpi=300)
                 plt.hist(diameter_shell1, bins=10, color='g', alpha=0.7)
@@ -297,21 +299,24 @@ if st.button("Run YOLOv5 Detection"):
             
             scattering_cross_sections = np.array(scattering_cross_sections)
             with col1:
+                plt.figure(dpi = 300)
+                fig, ax = plt.subplots()
                 column_0 = scattering_cross_sections[:, 0]
-                plt.plot( wavelengths,column_0, label='qext', marker='x', color = 'b')
+                ax.plot( wavelengths,column_0, label='qext', marker='x', color = 'b')
                 
                 column_1 = scattering_cross_sections[:, 1]
-                plt.plot( wavelengths,column_1, label='qsca', color = 'r')
+                ax.plot( wavelengths,column_1, label='qsca', color = 'r')
                 
                 column_2 = scattering_cross_sections[:, 2]
-                plt.plot( wavelengths,column_0, label='qabs', color = 'g')
-                plt.ylim(min(scattering_cross_sections[:, 0]), max(scattering_cross_sections[:, 0]))
-                plt.xlim(200, 1000)
-                plt.title('Light scattering cross section')
-                plt.xlabel('wavelength')
-                plt.ylabel('efficiencies')
-                plt.legend()
-                st.pyplot(plt)
+                ax.plot( wavelengths,column_0, label='qabs', color = 'g')
+                
+                ax.ylim(min(scattering_cross_sections[:, 0]), max(scattering_cross_sections[:, 0]))
+                ax.xlim(200, 1000)
+                ax.title('Light scattering cross section')
+                ax.xlabel('wavelength')
+                ax.ylabel('efficiencies')
+                ax.legend()
+                ax.pyplot(plt)
             with col2:
                 st.write("Light scattering by a sphere")
                 data = pd.DataFrame({'wl': np.linspace(min_x, max_x, 200),
