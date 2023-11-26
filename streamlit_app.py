@@ -271,7 +271,7 @@ if st.button("Run YOLOv5 Detection"):
             #-------------------------------#
             min_x = max(lamda_core[0], lamda_shell[0])
             max_x = min(lamda_core[-1], lamda_shell[-1])
-            wavelengths = np.linspace(min_x, max_x, 200)
+            wavelengths = np.linspace(min_x, max_x, 300)
             #-------------interpolate dielectric function  core with new wavelengths---------------------
             nCore = []
             kCore = []
