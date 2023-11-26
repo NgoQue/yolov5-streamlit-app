@@ -311,14 +311,14 @@ if st.button("Run YOLOv5 Detection"):
                 
                 column_2 = scattering_cross_sections[:, 2]
                 plt.plot( wavelengths,column_0, label='qabs', color = 'g')
-                # plt.xlim(min_x, 1000)
+                plt.ylim(min(scattering_cross_sections[:, 0]), max(scattering_cross_sections[:, 0]))
                 plt.xlim(200, 1000)
                 plt.xlabel('wavelength')
                 plt.ylabel('efficiencies')
                 st.pyplot(plt)
             with col2:
                 st.write("Light scattering by a sphere")
-                data = pd.DataFrame({'wl': wavelength,
+                data = pd.DataFrame({'wl': np.linspace(min_x, max_x, 200),
                      'qext': scattering_cross_sections[:, 0],
                      'qsca': scattering_cross_sections[:, 1],
                      'qabs': scattering_cross_sections[:, 2]})
