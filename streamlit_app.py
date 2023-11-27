@@ -271,7 +271,7 @@ if st.button("Run YOLOv5 Detection"):
             #-------------------------------#
             min_x = max(lamda_core[0], lamda_shell[0])
             max_x = min(lamda_core[-1], lamda_shell[-1])
-            # wavelengths = np.linspace(min_x, max_x, 300)
+            wavelengths = np.linspace(min_x, max_x, 300)
             #-------------interpolate dielectric function  core with new wavelengths---------------------
             nCore = []
             kCore = []
@@ -300,15 +300,10 @@ if st.button("Run YOLOv5 Detection"):
             if np.isnan(D_core) and not np.isnan(D_shell): 
                 D_core=0
                 m_core = m_shell
-                min_x = lamda_shell[0]
-                max_x = lamda_shell[-1]
             if not np.isnan(D_core) and np.isnan(D_shell): 
                 D_shell=D_core
                 m_shell = m_core
-                min_x = lamda_core[0]
-                max_x = lamda_core[-1]
             #---------------- caculate #qext, qsca, qabs, g, qpr, qback, qratio-----------------------------
-            wavelengths = np.linspace(min_x, max_x, 300)
             scattering_cross_sections = []
             for wavelength, mcore, mshell in zip(wavelengths, m_core, m_shell):
                     mie_core_shell = MieQCoreShell(wavelength=wavelength,dCore=D_core,dShell=D_shell,mCore=mcore,mShell=mshell)
