@@ -54,13 +54,15 @@ else:
 number = st.sidebar.number_input('Enter the value of scale bar into the box below.')
 st.sidebar.write('The current number is ', number)
 
-material_core = st.sidebar.radio(
-    "Select material core",
-    ['Au', 'Ag', 'Al', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'ZnO'], index=None)
-
-material_shell = st.sidebar.radio(
-    "Select material shell",
-    ['Au', 'Ag', 'Al', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'ZnO'], index=None)
+col1, col2 = st.sidebar.columns(2)
+with col1:
+    material_core = st.sidebar.radio(
+        "Select material core",
+        ['Au', 'Ag', 'Al', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'ZnO'], index=None)
+with col2:
+    material_shell = st.sidebar.radio(
+        "Select material shell",
+        ['Au', 'Ag', 'Al', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'ZnO'], index=None)
 
  #-----------------------funtions-------------------------#
 #  ------------------return all folder in path-----------------------------
