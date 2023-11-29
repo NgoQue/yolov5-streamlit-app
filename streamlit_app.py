@@ -270,7 +270,7 @@ if st.button("Run YOLOv5 Detection"):
             #-------------------------------#
             if np.isnan(D_core) and not np.isnan(D_shell): 
                 D_core=0
-                lamda_core = lamda_hell
+                lamda_core = lamda_shell
                 n_core = n_shell
                 k_core = k_shell
             if not np.isnan(D_core) and np.isnan(D_shell): 
