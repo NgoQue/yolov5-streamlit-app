@@ -208,7 +208,7 @@ if st.button("Run YOLOv5 Detection"):
                 plt.title('Core diameter distribution')
                 st.pyplot(plt)
             with col2:
-                # st.subheader("Core")
+                st.subheader("")
                 data = pd.DataFrame(({"Diameter_core": diameter_core1[:]}))
                 st.dataframe(data, height=370, width=200)
         
@@ -225,7 +225,7 @@ if st.button("Run YOLOv5 Detection"):
                 st.pyplot(plt)
         
             with col2:
-                # st.subheader("Shell")
+                st.subheader("")
                 data = pd.DataFrame(({'Diameter_shell': diameter_shell1[:]}))
                 st.dataframe(data, height=370, width=200)
             # -----------------Xóa tệp hình ảnh tạm thời---------------------------
@@ -345,7 +345,7 @@ if st.button("Run YOLOv5 Detection"):
                 ax.legend()
                 st.pyplot(plt)
             with col2:
-                st.write("Light scattering by a sphere")
+                st.write("")
                 data = pd.DataFrame({'wl': np.linspace(min_x, max_x, 300),
                      'qext': scattering_cross_sections[:, 0],
                      'qsca': scattering_cross_sections[:, 1],
