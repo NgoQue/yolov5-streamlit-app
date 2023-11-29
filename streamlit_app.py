@@ -350,4 +350,6 @@ if st.button("Run YOLOv5 Detection"):
                      'qsca': scattering_cross_sections[:, 1],
                      'qabs': scattering_cross_sections[:, 2]})
                 st.dataframe(data, height=370, width=200)
-                
+
+shutil.rmtree('yolov5/runs/detect')
+shutil.rmtree('images')
