@@ -56,10 +56,10 @@ st.sidebar.write('The current number is ', number)
 
 material_core = st.sidebar.selectbox(
     "Select material core",
-    ['Au', 'Ag', 'Al', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'ZnO'], index=None)
+    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'ZnO'], index=None)
 material_shell = st.sidebar.selectbox(
     "Select material shell",
-    ['Au', 'Ag', 'Al', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'ZnO'], index=None)
+    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'ZnO'], index=None)
 
  #-----------------------funtions-------------------------#
 #  ------------------return all folder in path-----------------------------
