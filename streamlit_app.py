@@ -25,7 +25,7 @@ if not os.path.exists(folder_detect):
 
 # uploaded_file = st.sidebar.file_uploader(
 #     "Upload your image file ", type=['png', 'jpeg', 'jpg'])
-uploaded_file = st.sidebar.file_uploader('', type=['png', 'jpeg', 'jpg'])
+uploaded_file = st.sidebar.file_uploader(, type=['png', 'jpeg', 'jpg'])
 if uploaded_file is not None:
     with st.spinner(text='loading...'):
         st.sidebar.image(uploaded_file)
