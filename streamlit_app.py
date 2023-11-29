@@ -208,7 +208,7 @@ if st.button("Run YOLOv5 Detection"):
                 plt.title('Core diameter distribution')
                 st.pyplot(plt)
             with col2:
-                st.subheader("Core")
+                # st.subheader("Core")
                 data = pd.DataFrame(({"Diameter_core": diameter_core1[:]}))
                 st.dataframe(data, height=370, width=200)
         
@@ -225,7 +225,7 @@ if st.button("Run YOLOv5 Detection"):
                 st.pyplot(plt)
         
             with col2:
-                st.subheader("Shell")
+                # st.subheader("Shell")
                 data = pd.DataFrame(({'Diameter_shell': diameter_shell1[:]}))
                 st.dataframe(data, height=370, width=200)
             # -----------------Xóa tệp hình ảnh tạm thời---------------------------
