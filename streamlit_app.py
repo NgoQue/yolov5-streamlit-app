@@ -345,7 +345,7 @@ if st.button("Run YOLOv5 Detection"):
                 ax.legend()
                 st.pyplot(plt)
             with col2:
-                st.subhearder("")
+                st.subheader("")
                 data = pd.DataFrame({'wl': np.linspace(min_x, max_x, 300),
                      'qext': scattering_cross_sections[:, 0],
                      'qsca': scattering_cross_sections[:, 1],
