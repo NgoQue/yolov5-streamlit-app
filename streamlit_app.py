@@ -341,7 +341,7 @@ if st.button("Run YOLOv5 Detection"):
                 ax.set_ylim(np.amin(scattering_cross_sections[:, 0:3]), np.amax(scattering_cross_sections[:, 0:3]))
                 ax.set_title('Light scattering cross section')
                 ax.set_xlabel('wavelength')
-                ax.set_ylabel('efficiencies')
+                ax.set_ylabel('efficiency')
                 ax.legend()
                 st.pyplot(plt)
             with col2:
