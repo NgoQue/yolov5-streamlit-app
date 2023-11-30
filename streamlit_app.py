@@ -336,7 +336,7 @@ if st.button("Run Detection"):
                 ax.plot( wavelengths,column_1,'r', label='qsca', marker='o', markersize=4, markevery=10)
                 
                 column_2 = scattering_cross_sections[:, 2]
-                ax.plot( wavelengths,column_0,'g', label='qabs', marker='^', markersize=4, markevery=11)
+                ax.plot( wavelengths,column_2,'g', label='qabs', marker='^', markersize=4, markevery=11)
 
                 ax.set_xlim(200, 1000)
                 ax.set_ylim(np.amin(scattering_cross_sections[:, 0:3]), np.amax(scattering_cross_sections[:, 0:3]))
