@@ -57,10 +57,10 @@ number = st.sidebar.number_input('Enter the value of scale bar into the box belo
 
 material_core = st.sidebar.selectbox(
     "Select material core",
-    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'ZnO'], index=None)
+    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2'], index=None)
 material_shell = st.sidebar.selectbox(
     "Select material shell",
-    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'ZnO'], index=None)
+    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2'], index=None)
 
  #-----------------------funtions-------------------------#
 #  ------------------return all folder in path-----------------------------
