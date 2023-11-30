@@ -334,13 +334,13 @@ if st.button("Run Detection"):
                 column_1 = scattering_cross_sections[:, 1]
                 ax.plot( wavelengths,column_1,'r', label='qsca', marker='o', markersize=4, markevery=10)
                 
-                column_2 = scattering_cross_sections[:, 2]
+                column_2 = scattering_cross_sections[:, 3]
                 ax.plot( wavelengths,column_0,'g', label='qabs', marker='^', markersize=4, markevery=11)
 
                 ax.set_xlim(200, 1000)
                 ax.set_ylim(np.amin(scattering_cross_sections[:, 0:3]), np.amax(scattering_cross_sections[:, 0:3]))
                 ax.set_title('Efficiency Spectra in Absorption, Scattering, and Extinction')
-                ax.set_xlabel('Wavelength')
+                ax.set_xlabel('Wavelength(nm)')
                 ax.set_ylabel('Efficiency')
                 ax.legend()
                 st.pyplot(plt)
