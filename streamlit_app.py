@@ -329,13 +329,13 @@ if st.button("Run Detection"):
                 fig, ax = plt.subplots()
                 
                 column_0 = scattering_cross_sections[:, 0]
-                ax.plot( wavelengths,column_0, label='qext', marker='x', 'b--')
+                ax.plot( wavelengths,column_0,'b--', dashes=[2,1], label='qext')
                 
                 column_1 = scattering_cross_sections[:, 1]
-                ax.plot( wavelengths,column_1, label='qsca', 'r--')
+                ax.plot( wavelengths,column_1,'r--', dashes=[2,1], label='qsca')
                 
                 column_2 = scattering_cross_sections[:, 2]
-                ax.plot( wavelengths,column_0, label='qabs', color = 'g')
+                ax.plot( wavelengths,column_0,'b--', dashes=[2,1], label='qabs')
 
                 ax.set_xlim(200, 1000)
                 ax.set_ylim(np.amin(scattering_cross_sections[:, 0:3]), np.amax(scattering_cross_sections[:, 0:3]))
