@@ -324,19 +324,19 @@ if st.button("Run Detection"):
                     scattering_cross_sections.append(mie_core_shell)
             
             scattering_cross_sections = np.array(scattering_cross_sections)
-            st.write(scattering_cross_sections)
+            # st.write(scattering_cross_sections)
             with col1:
                 plt.figure(dpi = 300)
                 fig, ax = plt.subplots()
                 
                 column_0 = scattering_cross_sections[:, 0]
-                ax.plot( wavelengths,column_0,'b',  label='qext', marker='s', markersize=4, markevery=9)
+                ax.plot( wavelengths,column_0,'b',  label='qext', marker='s', markersize=3, markevery=9)
                 
                 column_1 = scattering_cross_sections[:, 1]
-                ax.plot( wavelengths,column_1,'r', label='qsca', marker='o', markersize=4, markevery=10)
+                ax.plot( wavelengths,column_1,'r', label='qsca', marker='o', markersize=3, markevery=10)
                 
                 column_2 = scattering_cross_sections[:, 2]
-                ax.plot( wavelengths,column_2,'g', label='qabs', marker='^', markersize=4, markevery=11)
+                ax.plot( wavelengths,column_2,'g', label='qabs', marker='^', markersize=3, markevery=11)
 
                 ax.set_xlim(200, 1000)
                 ax.set_ylim(np.amin(scattering_cross_sections[:, 0:3]), np.amax(scattering_cross_sections[:, 0:3]))
