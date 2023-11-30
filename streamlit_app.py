@@ -340,7 +340,7 @@ if st.button("Run Detection"):
 
                 ax.set_xlim(200, 1000)
                 ax.set_ylim(np.amin(scattering_cross_sections[:, 0:3]), np.amax(scattering_cross_sections[:, 0:3]))
-                # ax.set_title('Efficiency Spectra')
+                ax.set_title('The Effective Absorption, Scattering, and Extinction Spectra')
                 ax.set_xlabel('Wavelength(nm)')
                 ax.set_ylabel('Efficiency')
                 ax.legend()
