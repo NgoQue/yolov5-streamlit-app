@@ -165,7 +165,7 @@ def linear_interpolation(min_x, max_x, x_data, y_data, x_interpolate):
     return y_interpolate
  # ------------------------------# run detect.py in yolov5----------------------------------------
 # st.title('YOLOv5 Streamlit App')
-if st.button("Run Detection"):
+if st.button("Run Calculate"):
     int_image_path = f'images/{uploaded_file.name}'
     path_detect_py = 'yolov5/detect.py'
     path_weight = "yolov5/runs/train/exp/weights/best.pt"
