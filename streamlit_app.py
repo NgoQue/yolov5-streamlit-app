@@ -330,17 +330,17 @@ if st.button("Run Calculate"):
                 fig, ax = plt.subplots()
                 
                 column_0 = scattering_cross_sections[:, 0]
-                ax.plot( wavelengths,column_0,'b',  label='qext', marker='s', markersize=4, markevery=10)
+                ax.plot( wavelengths,column_0,'b',  label='extinction', marker='s', markersize=4, markevery=10)
                 
                 column_1 = scattering_cross_sections[:, 1]
-                ax.plot( wavelengths,column_1,'r', label='qsca', marker='^', markersize=4, markevery=10)
+                ax.plot( wavelengths,column_1,'r', label='scattering', marker='^', markersize=4, markevery=10)
                 
                 column_2 = scattering_cross_sections[:, 2]
-                ax.plot( wavelengths,column_2,'g', label='qabs', marker='o', markersize=4, markevery=10)
+                ax.plot( wavelengths,column_2,'g', label='absorption', marker='o', markersize=4, markevery=10)
 
                 ax.set_xlim(200, 1000)
                 ax.set_ylim(np.amin(scattering_cross_sections[:, 0:3]), np.amax(scattering_cross_sections[:, 0:3]))
-                ax.set_title('The Effective Absorption, Scattering, and Extinction Spectra')
+                ax.set_title('The Optical Effective Absorption, Scattering, and Extinction Spectra')
                 ax.set_xlabel('Wavelength(nm)')
                 ax.set_ylabel('Efficiency')
                 ax.legend()
