@@ -208,7 +208,7 @@ if st.button("Run Calculate"):
                 plt.title('Core diameter distribution', fontsize=14)
                 plt.xticks(fontsize=14)
                 plt.yticks(fontsize=14)
-                ax.legend(frameon=False, fontsize=14)
+                plt.legend(frameon=False, fontsize=14)
                 st.pyplot(plt)
             with col2:
                 st.subheader("    ")
@@ -227,7 +227,7 @@ if st.button("Run Calculate"):
                 plt.title('Shell diameter distribution', fontsize=14)
                 plt.xticks(fontsize=14)
                 plt.yticks(fontsize=14)
-                ax.legend(frameon=False, fontsize=14)
+                plt.legend(frameon=False, fontsize=14)
                 st.pyplot(plt)
         
             with col2:
