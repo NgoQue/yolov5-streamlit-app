@@ -347,7 +347,7 @@ if st.button("Run Calculate"):
                 else:
                     ax.set_xlim(200, 1000)
                 ax.set_ylim(np.amin(scattering_cross_sections[:, 0:3]), np.amax(scattering_cross_sections[:, 0:3]))
-                ax.set_title('The Optical Effective Absorption, Scattering, and Extinction Spectra', fontsize=14)
+                ax.set_title('The Optical Effective Absorption, Scattering, and Extinction Spectra', fontsize=16)
                 ax.set_xlabel('Wavelength(nm)', fontsize=16, labelpad = 6)
                 ax.set_ylabel('Efficiency', fontsize=16, labelpad = 15)
                 plt.xticks(fontsize=16)
