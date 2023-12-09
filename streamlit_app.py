@@ -350,9 +350,9 @@ if st.button("Run Calculate"):
                 ax.set_title('The Optical Effective Absorption, Scattering, and Extinction Spectra', fontsize=14)
                 ax.set_xlabel('Wavelength(nm)', fontsize=16)
                 ax.set_ylabel('Efficiency', fontsize=16)
-                plt.xticks(fontsize=14)
-                plt.yticks(fontsize=14)
-                ax.legend(frameon=False, fontsize=14)
+                plt.xticks(fontsize=16)
+                plt.yticks(fontsize=16)
+                ax.legend(frameon=False, fontsize=16)
                 st.pyplot(plt)
             with col2:
                 st.subheader("")
