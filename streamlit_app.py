@@ -342,7 +342,10 @@ if st.button("Run Calculate"):
                 column_2 = scattering_cross_sections[:, 2]
                 ax.plot( wavelengths,column_2,'g', label='absorption', marker='o', markersize=4, markevery=10)
 
-                ax.set_xlim(200, 1000)
+                if(max_x<1000):
+                    ax.set_xlim(200, max_x)
+                else:
+                    ax.set_xlim(200, 1000)
                 ax.set_ylim(np.amin(scattering_cross_sections[:, 0:3]), np.amax(scattering_cross_sections[:, 0:3]))
                 ax.set_title('The Optical Effective Absorption, Scattering, and Extinction Spectra', fontsize=14)
                 ax.set_xlabel('Wavelength(nm)', fontsize=14)
