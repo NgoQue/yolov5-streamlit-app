@@ -352,6 +352,7 @@ if st.button("Run Calculate"):
                 ax.set_ylabel('Efficiency', fontsize=16)
                 plt.xticks(fontsize=16)
                 plt.yticks(fontsize=16)
+                ax.title.set_pad(20)
                 ax.legend(frameon=False, fontsize=16)
                 st.pyplot(plt)
             with col2:
