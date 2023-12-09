@@ -355,7 +355,7 @@ if st.button("Run Calculate"):
                 plt.xticks(fontsize=14)
                 plt.yticks(fontsize=14)
                 ax.legend(frameon=False, fontsize=14)
-                st.pyplot(plt)
+                st.pyplot(plt, use_container_width=True)
             with col2:
                 st.subheader("")
                 data = pd.DataFrame({'wl': np.linspace(min_x, max_x, 1000),
