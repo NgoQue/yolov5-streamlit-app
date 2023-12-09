@@ -331,7 +331,7 @@ if st.button("Run Calculate"):
             # st.write(scattering_cross_sections)
             with col1:
                 plt.figure(dpi = 300)
-                fig, ax = plt.subplots(figsize=(8, 6))
+                fig, ax = plt.subplots(figsize=(7.5, 5.5))
                 
                 column_0 = scattering_cross_sections[:, 0]
                 ax.plot( wavelengths,column_0,'b',  label='extinction', marker='s', markersize=4, markevery=10)
@@ -350,8 +350,10 @@ if st.button("Run Calculate"):
                 ax.set_title('The Optical Effective Absorption, Scattering, and Extinction Spectra', fontsize=14)
                 ax.set_xlabel('Wavelength(nm)', fontsize=14)
                 ax.set_ylabel('Efficiency', fontsize=14)
-                plt.xticks(fontsize=14)
-                plt.yticks(fontsize=14)
+                # plt.xticks(fontsize=14)
+                # plt.yticks(fontsize=14)
+                ax.set_xticks(fontsize = 12)
+                ax.set_yticks(fontsize = 12)
                 ax.legend(frameon=False, fontsize=14)
                 st.pyplot(plt)
             with col2:
