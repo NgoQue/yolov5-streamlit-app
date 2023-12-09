@@ -289,7 +289,7 @@ if st.button("Run Calculate"):
                 min_x = 200
             if max_x >3000:
                 max_x = 3000
-            wavelengths = np.linspace(min_x, max_x, 300)
+            wavelengths = np.linspace(min_x, max_x, 1000)
             #-------------interpolate dielectric function  core with new wavelengths---------------------
             nCore = []
             kCore = []
@@ -353,7 +353,7 @@ if st.button("Run Calculate"):
                 st.pyplot(plt)
             with col2:
                 st.subheader("")
-                data = pd.DataFrame({'wl': np.linspace(min_x, max_x, 300),
+                data = pd.DataFrame({'wl': np.linspace(min_x, max_x, 1000),
                      'qext': scattering_cross_sections[:, 0],
                      'qsca': scattering_cross_sections[:, 1],
                      'qabs': scattering_cross_sections[:, 2]})
