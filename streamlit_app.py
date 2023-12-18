@@ -157,10 +157,7 @@ def detect_diameter(namefile_txt, num_values):
             D_shell = np.NaN
 #---------------------------interpolate dielectric function-----------------------------
 def linear_interpolation(min_x, max_x, x_data, y_data, x_interpolate):
-    if x_interpolate < min_x or x_interpolate > max_x:
-        return 0 
-
-    coefficients = interpolate.interp1d(x_data, y_data, kind='cubic')
+    coefficients = interpolate.interp1d(x_data, y_data, kind='cubic', fill_value='extrapolate')
     y_interpolate = coefficients(x_interpolate)# Tính giá trị nội suy
     return y_interpolate
  # ------------------------------# run detect.py in yolov5----------------------------------------
@@ -245,33 +242,27 @@ if st.button("Run Calculate"):
             lamda_core = dielectric_core['wl']
             lamda_core = (lamda_core.values)*1000
             
-            n_core = dielectric_core['n']
-            n_core = n_core.values
+            n_core = dielectric_core['n'].values
             
             column = 'k'
             if column in dielectric_core.columns:
-                k_core = dielectric_core['k']
-                k_core = k_core.values
+                k_core = dielectric_core['k'].values
             else:
                 dielectric_core['k'] = 0
-                k_core = dielectric_core['k']
-                k_core = k_core.values
+                k_core = dielectric_core['k'].values
             # -------------------------Dielectric funtion shell-----------------------------
             dielectric_shell = pd.read_csv(f'Data_dielectric_function/{material_shell}.csv', delimiter=',')
             lamda_shell = dielectric_shell['wl']
             lamda_shell = (lamda_shell.values)*1000
             
-            n_shell = dielectric_shell['n']
-            n_shell = n_shell.values
+            n_shell = dielectric_shell['n'].values
             
             column = 'k'
             if column in dielectric_shell.columns:
-                k_shell = dielectric_shell['k']
-                k_shell = k_shell.values
+                k_shell = dielectric_shell['k'].values
             else:
                 dielectric_shell['k'] = 0
-                k_shell = dielectric_shell['k']
-                k_shell = k_shell.values
+                k_shell = dielectric_shell['k'].values
             #-------------------------------#
             if np.isnan(D_core) and not np.isnan(D_shell): 
                 D_core=0
@@ -283,12 +274,8 @@ if st.button("Run Calculate"):
                 lamda_shell = lamda_core
                 n_shell = n_core
                 k_shell = k_core
-            min_x = max(lamda_core[0], lamda_shell[0])
-            max_x = min(lamda_core[-1], lamda_shell[-1])
-            if min_x <200:
-                min_x = 200
-            if max_x >3000:
-                max_x = 3000
+            min_x = 280
+            max_x = 3000
             wavelengths = np.linspace(min_x, max_x, 1000)
             #-------------interpolate dielectric function  core with new wavelengths---------------------
             nCore = []
@@ -344,9 +331,9 @@ if st.button("Run Calculate"):
                 ax.plot( wavelengths,column_2,'g', label='absorption', marker='o', markersize=4, markevery=10)
 
                 if(max_x<1000):
-                    ax.set_xlim(200, max_x)
+                    ax.set_xlim(280, max_x)
                 else:
-                    ax.set_xlim(200, 1000)
+                    ax.set_xlim(280, 1000)
                 ax.set_ylim(np.amin(scattering_cross_sections[:, 0:3]), np.amax(scattering_cross_sections[:, 0:3]))
                 # ax.set_title('The Optical Effective Absorption, Scattering, and Extinction Spectra', fontsize=14)
                 ax.set_title('ext. / scat. / abs. efficiency', fontsize=14)
