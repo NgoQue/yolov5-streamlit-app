@@ -52,7 +52,7 @@ if uploaded_file is not None:
 else:
     st.sidebar.error("Please upload a file")
 
-number = st.sidebar.number_input('Enter the value of scale bar into the box below.', step = 10)
+number = st.sidebar.number_input('Enter the value of scale bar into the box below.',value  = 100, step = 10)
 # st.sidebar.write('The current number is ', number)
 
 material_core = st.sidebar.selectbox(
