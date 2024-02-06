@@ -322,6 +322,7 @@ if st.button("Run Calculate"):
                     scattering_cross_sections.append(mie_core_shell)
             
             scattering_cross_sections = np.array(scattering_cross_sections)
+            Qext = scattering_cross_sections[:, 0]
             # st.write(scattering_cross_sections)
             with col1:
                 plt.figure(dpi = 300)
