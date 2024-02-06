@@ -415,7 +415,7 @@ if st.button("Run Calculate"):
                     deltaT = deltaT + [result]
                     time = time + [t]
                 plt.figure(figsize=(5,4), dpi=100)
-                plt.plot(T, deltaT) 
+                plt.plot(time, deltaT) 
                 plt.xlabel("time (s)")
                 plt.ylabel("temperature rise (K)")
                 st.pyplot(plt,use_container_width=True)
