@@ -378,7 +378,7 @@ if st.button("Run Calculate"):
             c_PDMS = 1460 #J/kg/K
             n = 3 # parameter capturing effecs of finte size and shape of the nanoparticles
             #-------------------------------------------#
-            if material_core==materrial_shell:
+            if material_core==material_shell:
                 parameter = pd.read_csv(f'Data_dielectric_function/parameter.csv', delimiter=',')
                 material = parameter['material'].values
                 K = parameter['K'].values
