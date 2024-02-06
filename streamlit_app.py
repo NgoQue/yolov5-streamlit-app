@@ -411,10 +411,16 @@ if st.button("Run Calculate"):
                     result, error  = quad(func, 0, t, args = (I0, alpha, rho_d, c_d, K_d, kappa, r, z))
                     deltaT = deltaT + [result]
                     time = time + [t]
-                plt.plot(time, deltaT)   
-                st.pyplot(plt)
+                plt.figure(figsize=(5,4), dpi=100)
+                plt.plot(T, deltaT) 
+                plt.xlabel("time (s)")
+                plt.ylabel("temperature rise (K)")
+                st.pyplot(plt,use_container_width=True)
 
+            if D_core is NaN:
                 temperature (808, D_shell, N, I0)
+            else:
+                temperature (808, D_core, N, I0)
 
 
 
