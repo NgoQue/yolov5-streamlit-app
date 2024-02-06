@@ -59,10 +59,10 @@ number = st.sidebar.number_input('Enter the value of scale bar into the box belo
 
 material_core = st.sidebar.selectbox(
     "Select material core",
-    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2'], index=None)
+    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'TiN'], index=None)
 material_shell = st.sidebar.selectbox(
     "Select material shell",
-    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2'], index=None)
+    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'TiN'], index=None)
 
 light_intensity = st.sidebar.number_input('Enter the value of light intensity $I_0 (W/cm²)$ into the box below.', value=1.0, step=0.1)
 I0 = light_intensity * 1e4  
