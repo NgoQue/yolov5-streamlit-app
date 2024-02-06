@@ -389,6 +389,7 @@ if st.button("Run Calculate"):
                         K_TiN = K[i] #(W/m/K)
                         rho_TiN = rho[i] #kg/m^3
                         c_TiN = c[i] #J/kg/K
+                        st.write(K_TiN, rho_TiN, c_TiN)
             #-------------------------------------------#
             # deltaT = []
             # time = []
