@@ -394,7 +394,6 @@ if st.button("Run Calculate"):
                 Qext_808 = Qext_808*(1e-18)
                 
                 R = R*(1e-9)
-                I0 = I0*(1e4)
                 Phi = N * (4 * np.pi / 3) * ((R)**3)
                 r = 0
                 z = 0
