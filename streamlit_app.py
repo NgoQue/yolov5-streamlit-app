@@ -378,9 +378,17 @@ if st.button("Run Calculate"):
             c_PDMS = 1460 #J/kg/K
             n = 3 # parameter capturing effecs of finte size and shape of the nanoparticles
             #-------------------------------------------#
-            K_TiN = 60 #(W/m/K)
-            rho_TiN = 5400 #kg/m^3
-            c_TiN = 553 #J/kg/K
+            if material_core==materrial_shell:
+                parameter = pd.read_csv(f'Data_dielectric_function/parameter.csv', delimiter=',')
+                material = parameter['material'].values
+                K = parameter['K'].values
+                rho = parameter['rho']
+                c = parameter['c']
+                for i in range(0, len(material), 1):
+                    if(material==material_core):
+                        K_TiN = K[i] #(W/m/K)
+                        rho_TiN = rho[i] #kg/m^3
+                        c_TiN = c[i] #J/kg/K
             #-------------------------------------------#
             # deltaT = []
             # time = []
