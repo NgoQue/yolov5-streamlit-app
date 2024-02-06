@@ -417,7 +417,7 @@ if st.button("Run Calculate"):
                 plt.ylabel("temperature rise (K)")
                 st.pyplot(plt,use_container_width=True)
 
-            if D_core is NaN:
+            if not np.isnan(D_core)
                 temperature (808, D_shell, N, I0)
             else:
                 temperature (808, D_core, N, I0)
