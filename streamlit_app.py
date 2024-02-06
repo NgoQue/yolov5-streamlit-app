@@ -432,6 +432,6 @@ if st.button("Run Calculate"):
                     st.dataframe(data, height=370, width=200)
                
             if not np.isnan(D_core):
-                temperature (808, D_shell, N, I0)
+                temperature (808, D_shell/2, N, I0)
             else:
-                temperature (808, D_core, N, I0)
+                temperature (808, D_core/2, N, I0)
