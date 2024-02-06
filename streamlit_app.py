@@ -385,7 +385,7 @@ if st.button("Run Calculate"):
                 rho = parameter['rho']
                 c = parameter['c']
                 for i in range(0, len(material), 1):
-                    if(material==material_core):
+                    if(material[i]==material_core):
                         K_TiN = K[i] #(W/m/K)
                         rho_TiN = rho[i] #kg/m^3
                         c_TiN = c[i] #J/kg/K
