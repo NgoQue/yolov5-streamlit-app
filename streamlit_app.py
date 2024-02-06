@@ -62,7 +62,7 @@ material_shell = st.sidebar.selectbox(
     "Select material shell",
     ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2'], index=None)
 
-light_intensity = st.sidebar.number_input('Enter the value of light intensity I0 (W/cm2) into the box below.', value=1.0, step=0.1)
+light_intensity = st.sidebar.number_input('Enter the value of light intensity $I_0$ (W/cm²) into the box below.', value=1.0, step=0.1)
 I0 = light_intensity * 1e4  
 
 N = st.sidebar.number_input('Enter the value the number of particles per volume (N) into the box below. Please note that the unit for N is N*1e18.', value=1.0, step=0.1)
