@@ -13,6 +13,7 @@ import argparse
 import time
 from PyMieScatt import MieQCoreShell 
 from scipy import interpolate
+from scipy.integrate import quad
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
