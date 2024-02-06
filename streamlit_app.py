@@ -382,6 +382,8 @@ if st.button("Run Calculate"):
             rho_TiN = 5400 #kg/m^3
             c_TiN = 553 #J/kg/K
             #-------------------------------------------#
+            deltaT = []
+            time = []
             def temperature (wavelength, R, N, I0):
                 index = 0
                 for i in wavelengths:
@@ -408,8 +410,6 @@ if st.button("Run Calculate"):
                 #thermal diffusivity
                 kappa = K_d/(rho_d*c_d)
             
-                deltaT = []
-                time = []
                 for t in range(0, 301, 1):
                     result, error  = quad(func, 0, t, args = (I0, alpha, rho_d, c_d, K_d, kappa, r, z))
                     deltaT = deltaT + [result]
@@ -430,5 +430,5 @@ if st.button("Run Calculate"):
                 st.pyplot(plt)
             with col2:
                 st.subheader("")
-                data = pd.DataFrame({'time': range(0, 301, 1),'T': deltaT})
+                data = pd.DataFrame({'time': time,'T': deltaT})
                 st.dataframe(data, height=370, width=200)
