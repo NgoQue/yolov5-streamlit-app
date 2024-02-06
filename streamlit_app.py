@@ -382,8 +382,8 @@ if st.button("Run Calculate"):
             rho_TiN = 5400 #kg/m^3
             c_TiN = 553 #J/kg/K
             #-------------------------------------------#
-            deltaT = []
-            time = []
+            # deltaT = []
+            # time = []
             def temperature (wavelength, R, N, I0):
                 index = 0
                 for i in wavelengths:
@@ -409,26 +409,29 @@ if st.button("Run Calculate"):
                 K_d = K_PDMS*((K_TiN + (n-1)*K_PDMS + (n-1)*Phi*(K_TiN - K_PDMS))/(K_TiN + (n-1)*K_PDMS - Phi*(K_TiN - K_PDMS)))
                 #thermal diffusivity
                 kappa = K_d/(rho_d*c_d)
-            
+
+                deltaT = []
+                time = []
                 for t in range(0, 301, 1):
                     result, error  = quad(func, 0, t, args = (I0, alpha, rho_d, c_d, K_d, kappa, r, z))
                     deltaT = deltaT + [result]
                     time = time + [t]
+
+                with col1:
+                    plt.figure(dpi = 300)
+                    plt.plot(time, deltaT) 
+                    plt.xlabel("time (s)", fontsize=14)
+                    plt.ylabel("temperature rise (K)", fontsize=14)
+                    plt.title('Core diameter distribution', fontsize=14)
+                    plt.xticks(fontsize=14)
+                    plt.yticks(fontsize=14)
+                    st.pyplot(plt)
+                with col2:
+                    st.subheader("")
+                    data = pd.DataFrame({'time': time,'T': deltaT})
+                    st.dataframe(data, height=370, width=200)
                
             if not np.isnan(D_core):
                 temperature (808, D_shell, N, I0)
             else:
                 temperature (808, D_core, N, I0)
-            with col1:
-                plt.figure(dpi = 300)
-                plt.plot(time, deltaT) 
-                plt.xlabel("time (s)", fontsize=14)
-                plt.ylabel("temperature rise (K)", fontsize=14)
-                plt.title('Core diameter distribution', fontsize=14)
-                plt.xticks(fontsize=14)
-                plt.yticks(fontsize=14)
-                st.pyplot(plt)
-            with col2:
-                st.subheader("")
-                data = pd.DataFrame({'time': time,'T': deltaT})
-                st.dataframe(data, height=370, width=200)
