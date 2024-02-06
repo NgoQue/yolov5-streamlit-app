@@ -430,6 +430,5 @@ if st.button("Run Calculate"):
                 st.pyplot(plt)
             with col2:
                 st.subheader("")
-                data = pd.DataFrame({'time': range(0, 301, 1),
-                     'T': deltaT)
+                data = pd.DataFrame({'time': range(0, 301, 1),'T': deltaT})
                 st.dataframe(data, height=370, width=200)
