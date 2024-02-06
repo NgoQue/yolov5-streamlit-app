@@ -318,7 +318,7 @@ if st.button("Run Calculate"):
             #---------------- caculate #qext, qsca, qabs, g, qpr, qback, qratio-----------------------------
             scattering_cross_sections = []
             for wavelength, mcore, mshell in zip(wavelengths, m_core, m_shell):
-                    mie_core_shell = MieQCoreShell(wavelength=wavelength,dCore=D_core,dShell=D_shell,mCore=mcore,mShell=mshell, nMedium=1.33,)
+                    mie_core_shell = MieQCoreShell(wavelength=wavelength,dCore=D_core,dShell=D_shell,mCore=mcore,mShell=mshell, nMedium=1.4,)
                     scattering_cross_sections.append(mie_core_shell)
             
             scattering_cross_sections = np.array(scattering_cross_sections)
@@ -358,4 +358,83 @@ if st.button("Run Calculate"):
                      'qsca': scattering_cross_sections[:, 1],
                      'qabs': scattering_cross_sections[:, 2]})
                 st.dataframe(data, height=370, width=200)
+            #-----------------------------------------------Photothermal heat---------------------------------------------------------------------------#
+            def func(t, I0, alpha, rho_d, c_d, K_d, kappa, r, z):
+                term1 = (I0*(1-R_reflectivity)*alpha)/(2*rho_d*c_d)
+                term2 = np.exp(-((beta**2)*(r**2)) / (1 + 4*(beta**2)*kappa*t))
+                term3 = (np.exp((alpha**2)*kappa*t)) / (1 + 4*(beta**2)*kappa*t)
+                term4 = np.exp(-alpha*z)* erfc((2*alpha*kappa*t - z) / (2*np.sqrt(kappa*t)))
+                term5 = np.exp(alpha*z) * erfc((2*alpha*kappa*t + z) / (2*np.sqrt(kappa*t)))
+                return term1*term2*term3*(term4 + term5)
+
+            #Parameter of PDMS
+            beta = 500 #(m^-1)
+            R_reflectivity = 0
+            K_PDMS = 0.16 #(W/m/K)
+            rho_PDMS = 970 #kg/m^3
+            c_PDMS = 1460 #J/kg/K
+            n = 3 # parameter capturing effecs of finte size and shape of the nanoparticles
+            #-------------------------------------------#
+            K_TiN = 60 #(W/m/K)
+            rho_TiN = 5400 #kg/m^3
+            c_TiN = 553 #J/kg/K
+            #-------------------------------------------#
+            def temperature (wavelength, R, N, I0):
+                index = 0
+                for i in wavelengths:
+                    index +=1
+                    if int(i)<=wavelength+1 and int(i)>=wavelength-1:
+                        break
+                Qext_808 = Qext[index] 
+                Qext_808 = Qext_808*(1e-18)
+                
+                R = R*(1e-9)
+                I0 = I0*(1e4)
+                Phi = N * (4 * np.pi / 3) * ((R)**3)
+                r = 0
+                z = 0
+                
+                # alpha = N*Q_ext # Q_ext is the extinction creoo section 
+                alpha = (3*Phi*Qext_808)/(4*np.pi*(R**3))
+                #the mass density
+                c_d = c_PDMS*(1-(rho_TiN*Phi)/(rho_PDMS**(1-Phi) + rho_TiN**Phi)) + c_TiN*((rho_TiN**Phi)/(rho_PDMS**(1-Phi) + rho_TiN**Phi))
+                #the specific heat capacity
+                rho_d = (rho_PDMS**(1-Phi)) + rho_TiN**Phi
+                #The thermal conductivity
+                K_d = K_PDMS*((K_TiN + (n-1)*K_PDMS + (n-1)*Phi*(K_TiN - K_PDMS))/(K_TiN + (n-1)*K_PDMS - Phi*(K_TiN - K_PDMS)))
+                #thermal diffusivity
+                kappa = K_d/(rho_d*c_d)
+            
+                deltaT = []
+                time = []
+                for t in range(0, 301, 1):
+                    result, error  = quad(func, 0, t, args = (I0, alpha, rho_d, c_d, K_d, kappa, r, z))
+                    deltaT = deltaT + [result]
+                    time = time + [t]
+                plt.plot(time, deltaT)   
+                st.pyplot(plt)
+
+                temperature (808, D_shell, N, I0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
