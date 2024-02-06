@@ -320,7 +320,7 @@ if st.button("Run Calculate"):
             #---------------- caculate #qext, qsca, qabs, g, qpr, qback, qratio-----------------------------
             scattering_cross_sections = []
             for wavelength, mcore, mshell in zip(wavelengths, m_core, m_shell):
-                    mie_core_shell = MieQCoreShell(wavelength=wavelength,dCore=D_core,dShell=D_shell,mCore=mcore,mShell=mshell, nMedium=1.4,)
+                    mie_core_shell = MieQCoreShell(wavelength=wavelength,dCore=D_core,dShell=D_shell,mCore=mcore,mShell=mshell, nMedium=1.4,, asCrossSection=True)
                     scattering_cross_sections.append(mie_core_shell)
             
             scattering_cross_sections = np.array(scattering_cross_sections)
