@@ -420,8 +420,8 @@ if st.button("Run Calculate"):
                 with col1:
                     plt.figure(dpi = 300)
                     plt.plot(time, deltaT) 
-                    plt.xlabel("time (s)", fontsize=14)
-                    plt.ylabel("temperature rise (K)", fontsize=14)
+                    plt.xlabel("Time (s)", fontsize=14)
+                    plt.ylabel("Temperature rise (K)", fontsize=14)
                     plt.title('Core diameter distribution', fontsize=14)
                     plt.xticks(fontsize=14)
                     plt.yticks(fontsize=14)
@@ -431,7 +431,7 @@ if st.button("Run Calculate"):
                     data = pd.DataFrame({'time': time,'T': deltaT})
                     st.dataframe(data, height=370, width=200)
                
-            if not np.isnan(D_core):
+            if np.isnan(D_core):
                 temperature (808, D_shell, N, I0)
-            else:
+            if np.isnan(D_shell):
                 temperature (808, D_core, N, I0)
