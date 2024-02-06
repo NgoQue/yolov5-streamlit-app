@@ -387,8 +387,8 @@ if st.button("Run Calculate"):
                 for i in range(0, len(material), 1):
                     if(material[i]==material_core):
                         K_TiN = K[i] #(W/m/K)
-                        rho_TiN = rho[i] #kg/m^3
-                        c_TiN = c[i] #J/kg/K
+                        rho_TiN = rho[i]*1000 #kg/m^3
+                        c_TiN = c[i]*1000 #J/kg/K
                         st.write(K_TiN, rho_TiN, c_TiN)
             #-------------------------------------------#
             # deltaT = []
