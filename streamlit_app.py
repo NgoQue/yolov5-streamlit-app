@@ -14,6 +14,7 @@ import time
 from PyMieScatt import MieQCoreShell 
 from scipy import interpolate
 from scipy.integrate import quad
+from scipy.special import erfc
 # -------------------------Input------------------------------#
 # make a new folder save image
 folder = os.path.join('images')
