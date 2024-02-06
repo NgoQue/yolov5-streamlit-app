@@ -431,5 +431,5 @@ if st.button("Run Calculate"):
             with col2:
                 st.subheader("")
                 data = pd.DataFrame({'time': range(0, 301, 1),
-                     'T': deltaT,
+                     'T': deltaT)
                 st.dataframe(data, height=370, width=200)
