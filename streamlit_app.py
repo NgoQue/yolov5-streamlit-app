@@ -67,8 +67,8 @@ material_shell = st.sidebar.selectbox(
 light_intensity = st.sidebar.number_input('Enter the value of light intensity $I_0 (W/cm²)$ into the box below.', value=1.0, step=0.1)
 I0 = light_intensity * 1e4  
 
-N = st.sidebar.number_input('Enter the value the number of particles per volume (N) into the box below. Please note that the unit for N is $N.10^{18}$.', value=1.0, step=0.1)
-N = N * 1e18  
+N = st.sidebar.number_input('Enter the value the number of particles per volume (N) into the box below. Please note that the unit for N is $N.10^{17}$.', value=1.0, step=0.1)
+N = N * 1e17
 
 # st.sidebar.write('The current number is ', number)
  #-----------------------funtions-------------------------#
