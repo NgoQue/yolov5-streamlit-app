@@ -322,24 +322,22 @@ if st.button("Run Calculate"):
             for wavelength, mcore, mshell in zip(wavelengths, m_core, m_shell):
                     mie_core_shell = MieQCoreShell(wavelength=wavelength,dCore=D_core,dShell=D_shell,mCore=mcore,mShell=mshell, nMedium=1.4, asCrossSection=True)
                     scattering_cross_sections.append(mie_core_shell)
-            
+                
             scattering_cross_sections = np.array(scattering_cross_sections)
             Qext = scattering_cross_sections[:, 0]
-            # st.write(scattering_cross_sections)
-            cross_section = np.pi*(max(D_core, D_shell)**2
-            st.write(cross_section)
+    
             with col1:
                 plt.figure(dpi = 300)
                 # fig, ax = plt.subplots(figsize=(8, 6))
                 fig, ax = plt.subplots()
                 
-                column_0 = scattering_cross_sections[:, 0]
+                column_0 = scattering_cross_sections[:, 0] /(np.pi*(max(D_core, D_shell))**2)
                 ax.plot( wavelengths,column_0,'b',  label='extinction', marker='s', markersize=4, markevery=10)
                 
-                column_1 = scattering_cross_sections[:, 1]
+                column_1 = scattering_cross_sections[:, 1] /(np.pi*(max(D_core, D_shell))**2)
                 ax.plot( wavelengths,column_1,'r', label='scattering', marker='^', markersize=4, markevery=10)
                 
-                column_2 = scattering_cross_sections[:, 2]
+                column_2 = scattering_cross_sections[:, 2] /(np.pi*(max(D_core, D_shell))**2)
                 ax.plot( wavelengths,column_2,'g', label='absorption', marker='o', markersize=4, markevery=10)
 
                 if(max_x<1000):
