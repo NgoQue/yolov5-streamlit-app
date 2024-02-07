@@ -448,7 +448,6 @@ if st.button("Run Calculate"):
                     plt.plot(time, deltaT) 
                     plt.xlabel("Time (s)", fontsize=14)
                     plt.ylabel("Temperature rise (K)", fontsize=14)
-                    plt.title('Core diameter distribution', fontsize=14)
                     plt.xticks(fontsize=14)
                     plt.yticks(fontsize=14)
                     st.pyplot(plt)
