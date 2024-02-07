@@ -454,7 +454,7 @@ if st.button("Run Calculate"):
                     data = pd.DataFrame({'time': time,'T': deltaT})
                     st.dataframe(data, height=370, width=200)
                
-            if not np.isnan(D_core):
+            if not np.isnan(D_shell):
                 temperature (808, D_shell/2, N, I0)
             else:
                 temperature (808, D_core/2, N, I0)
