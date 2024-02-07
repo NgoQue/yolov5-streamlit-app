@@ -407,7 +407,7 @@ if st.button("Run Calculate"):
                 K_TiN = ((D_core**2)/(D_core**2 + D_shell**2))*K_core + ((D_shell**2)/(D_core**2 + D_shell**2))*K_shell
                 rho_TiN = ((D_core**3)*rho_core + (D_shell**3 - D_core**3)*rho_shell)/(D_shell**3)
                 c_TiN = ((D_core**3)*rho_core*c_core + (D_shell**3 - D_core**3)*rho_shell*c_shell) / ((D_core**3)*rho_core + (D_shell**3 - D_core**3)*rho_shell)
-                st.write(K_TiN, rho_TiN, c_TiN)
+                # st.write(K_TiN, rho_TiN, c_TiN)
             #-------------------------------------------#
             def temperature (wavelength, R, N, I0):
                 index = 0
