@@ -412,7 +412,7 @@ if st.button("Run Calculate"):
                 index = 0
                 for i in wavelengths:
                     index +=1
-                    if int(i)<=wavelength+1 and int(i)>=wavelength-1:
+                    if int(i)==808:
                         break
                 Qext_808 = Qext[index] 
                 Qext_808 = Qext_808*(1e-18)
