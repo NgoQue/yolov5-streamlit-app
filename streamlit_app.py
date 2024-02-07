@@ -326,7 +326,7 @@ if st.button("Run Calculate"):
             scattering_cross_sections = np.array(scattering_cross_sections)
             Qext = scattering_cross_sections[:, 0]
             # st.write(scattering_cross_sections)
-            cross_section = (np.pi*(max(D_core, D_shell)**2)
+            cross_section = np.pi*(max(D_core, D_shell)**2
             st.write(cross_section)
             with col1:
                 plt.figure(dpi = 300)
