@@ -435,7 +435,7 @@ if st.button("Run Calculate"):
 
                 deltaT = []
                 time = []
-                for t in range(0, 301, 1):
+                for t in range(0, 301, 2):
                     result, error  = quad(func, 0, t, args = (I0, alpha, rho_d, c_d, K_d, kappa, r, z))
                     deltaT = deltaT + [result]
                     time = time + [t]
