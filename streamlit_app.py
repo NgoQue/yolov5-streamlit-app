@@ -433,6 +433,8 @@ if st.button("Run Calculate"):
                 #thermal diffusivity
                 kappa = K_d/(rho_d*c_d)
 
+                st.write(Phi, alpha, c_d, rho_d, K_d, kappa)
+
                 deltaT = []
                 time = []
                 for t in range(1, 301, 2):
