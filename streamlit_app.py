@@ -325,7 +325,7 @@ if st.button("Run Calculate"):
                 
             scattering_cross_sections = np.array(scattering_cross_sections)
             Qext = scattering_cross_sections[:, 0]
-            cross_section=  (np.pi*(max(D_core, D_shell)/2)**2)
+            cross_section =  (np.pi*(max(D_core, D_shell)/2)**2)
     
             with col1:
                 plt.figure(dpi = 300)
@@ -345,7 +345,7 @@ if st.button("Run Calculate"):
                     ax.set_xlim(280, max_x)
                 else:
                     ax.set_xlim(280, 1000)
-                ax.set_ylim(np.amin(scattering_cross_sections[:, 0:3]), np.amax(scattering_cross_sections[:, 0:3]))
+                ax.set_ylim(np.amin(scattering_cross_sections[:, 0:3]/cross_section), np.amax(scattering_cross_sections[:, 0:3]/cross_section))
                 # ax.set_title('The Optical Effective Absorption, Scattering, and Extinction Spectra', fontsize=14)
                 ax.set_title('ext. / scat. / abs. efficiency', fontsize=14)
                 ax.set_xlabel('Wavelength(nm)', fontsize=14)
