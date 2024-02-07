@@ -331,13 +331,13 @@ if st.button("Run Calculate"):
                 # fig, ax = plt.subplots(figsize=(8, 6))
                 fig, ax = plt.subplots()
                 
-                column_0 = scattering_cross_sections[:, 0]
+                column_0 = scattering_cross_sections[:, 0]/(np.pi*(max(D_core, D_shell)**2)
                 ax.plot( wavelengths,column_0,'b',  label='extinction', marker='s', markersize=4, markevery=10)
                 
-                column_1 = scattering_cross_sections[:, 1]
+                column_1 = scattering_cross_sections[:, 1]/(np.pi*(max(D_core, D_shell)**2)
                 ax.plot( wavelengths,column_1,'r', label='scattering', marker='^', markersize=4, markevery=10)
                 
-                column_2 = scattering_cross_sections[:, 2]
+                column_2 = scattering_cross_sections[:, 2]/(np.pi*(max(D_core, D_shell)**2)
                 ax.plot( wavelengths,column_2,'g', label='absorption', marker='o', markersize=4, markevery=10)
 
                 if(max_x<1000):
