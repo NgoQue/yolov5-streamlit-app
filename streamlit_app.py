@@ -59,10 +59,10 @@ number = st.sidebar.number_input('Enter the value of scale bar into the box belo
 
 material_core = st.sidebar.selectbox(
     "Select material core",
-    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'TiN'], index=None)
+    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Ge', 'MgO', 'Ni', 'Pb','Si', 'SiO2', 'TiO2', 'TiN'], index=None)
 material_shell = st.sidebar.selectbox(
     "Select material shell",
-    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Fe2O3', 'Ge', 'MgO', 'Ni', 'Pb', 'Pt','Si', 'SiO2', 'TiO2', 'TiN'], index=None)
+    ['Au', 'Ag', 'Al2O3','Cu', 'Co', 'Cr', 'Ge', 'MgO', 'Ni', 'Pb','Si', 'SiO2', 'TiO2', 'TiN'], index=None)
 
 light_intensity = st.sidebar.number_input('Enter the value of light intensity $I_0 (W/cm²)$ into the box below.', value=1.0, step=0.1)
 I0 = light_intensity * 1e4  
@@ -408,8 +408,6 @@ if st.button("Run Calculate"):
                 c_TiN = ((D_core**3)*rho_core*c_core + (D_shell**3 - D_core**3)*rho_shell*c_core) / ((D_core**3)*rho_core + (D_shell**3 - D_core**3)*rho_shell)
                 st.write(K_TiN, rho_TiN, c_TiN)
             #-------------------------------------------#
-            # deltaT = []
-            # time = []
             def temperature (wavelength, R, N, I0):
                 index = 0
                 for i in wavelengths:
