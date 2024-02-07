@@ -403,8 +403,9 @@ if st.button("Run Calculate"):
                         rho_shell = rho[i]*1000 #kg/m^3
                         c_shell = c[i]*1000 #J/kg/K
                         st.write(K_shell, rho_shell, c_shell)
-                # K_TiN = ((4*np.pi*(D_core**2))/(4*np.pi*(D_core**2) + 4*np.pi*(D_shell**2)))*K_core + ((4*np.pi*(D_shell**2))/(4*np.pi*(D_core**2) + 4*np.pi*(D_shell**2)))*K_shell
-                # rho_TiN = 
+                K_TiN = ((D_core**2)/(D_core**2 + D_shell**2))*K_core + ((D_shell**2)/(D_core**2 + D_shell**2))*K_shell
+                rho_TiN = ((D_core**3)*rho_core + (D_shell**3 - D_core**3)*rho_shell)/(D_shell**3)
+                c_TiN = ((D_core**3)*rho_core*c_core + (D_shell**3 - D_core**3)*rho_shell*c_core) / ((D_core**3)*rho_core + (D_shell**3 - D_core**3)*rho_shell)
             #-------------------------------------------#
             # deltaT = []
             # time = []
