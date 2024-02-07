@@ -378,18 +378,33 @@ if st.button("Run Calculate"):
             c_PDMS = 1460 #J/kg/K
             n = 3 # parameter capturing effecs of finte size and shape of the nanoparticles
             #-------------------------------------------#
-            if material_core==material_shell:
-                parameter = pd.read_csv(f'Data_dielectric_function/parameter.csv', delimiter=',')
-                material = parameter['material'].values
-                K = parameter['K'].values
-                rho = parameter['rho']
-                c = parameter['c']
+            parameter = pd.read_csv(f'Data_dielectric_function/parameter.csv', delimiter=',')
+            material = parameter['material'].values
+            K = parameter['K'].values
+            rho = parameter['rho']
+            c = parameter['c']
+            if material_core==material_shell:#-----------------case single partical----------#
                 for i in range(0, len(material), 1):
                     if(material[i]==material_core):
                         K_TiN = K[i] #(W/m/K)
                         rho_TiN = rho[i]*1000 #kg/m^3
                         c_TiN = c[i]*1000 #J/kg/K
                         st.write(K_TiN, rho_TiN, c_TiN)
+                        break
+            if material_core != material_shell:#-----------------case core shell partical----------#
+                for i in range(0, len(material), 1):
+                    if(material[i]==material_core):
+                        K_core = K[i] #(W/m/K)
+                        rho_core = rho[i]*1000 #kg/m^3
+                        c_core = c[i]*1000 #J/kg/K
+                        st.write(K_core, rho_core, c_core)
+                    if(material[i]==material_shell):
+                        K_shell = K[i] #(W/m/K)
+                        rho_shell = rho[i]*1000 #kg/m^3
+                        c_shell = c[i]*1000 #J/kg/K
+                        st.write(K_shell, rho_shell, c_shell)
+                # K_TiN = ((4*np.pi*(D_core**2))/(4*np.pi*(D_core**2) + 4*np.pi*(D_shell**2)))*K_core + ((4*np.pi*(D_shell**2))/(4*np.pi*(D_core**2) + 4*np.pi*(D_shell**2)))*K_shell
+                # rho_TiN = 
             #-------------------------------------------#
             # deltaT = []
             # time = []
