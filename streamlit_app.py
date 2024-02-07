@@ -325,8 +325,7 @@ if st.button("Run Calculate"):
                 
             scattering_cross_sections = np.array(scattering_cross_sections)
             Qext = scattering_cross_sections[:, 0]
-            c=  (np.pi*(max(D_core, D_shell))**2)
-            st.write(c)
+            cross_section=  (np.pi*(max(D_core, D_shell)/2)**2)
     
             with col1:
                 plt.figure(dpi = 300)
@@ -334,13 +333,13 @@ if st.button("Run Calculate"):
                 fig, ax = plt.subplots()
                 
                 column_0 = scattering_cross_sections[:, 0] 
-                ax.plot( wavelengths,column_0,'b',  label='extinction', marker='s', markersize=4, markevery=10)
+                ax.plot( wavelengths,column_0/cross_section,'b',  label='extinction', marker='s', markersize=4, markevery=10)
                 
                 column_1 = scattering_cross_sections[:, 1] 
-                ax.plot( wavelengths,column_1,'r', label='scattering', marker='^', markersize=4, markevery=10)
+                ax.plot( wavelengths,column_1/cross_section,'r', label='scattering', marker='^', markersize=4, markevery=10)
                 
                 column_2 = scattering_cross_sections[:, 2] 
-                ax.plot( wavelengths,column_2,'g', label='absorption', marker='o', markersize=4, markevery=10)
+                ax.plot( wavelengths,column_2/cross_section,'g', label='absorption', marker='o', markersize=4, markevery=10)
 
                 if(max_x<1000):
                     ax.set_xlim(280, max_x)
