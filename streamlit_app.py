@@ -332,14 +332,14 @@ if st.button("Run Calculate"):
                 # fig, ax = plt.subplots(figsize=(8, 6))
                 fig, ax = plt.subplots()
                 
-                column_0 = scattering_cross_sections[:, 0] 
-                ax.plot( wavelengths,column_0/cross_section,'b',  label='extinction', marker='s', markersize=4, markevery=10)
+                column_0 = scattering_cross_sections[:, 0] /cross_section
+                ax.plot( wavelengths,column_0,'b',  label='extinction', marker='s', markersize=4, markevery=10)
                 
-                column_1 = scattering_cross_sections[:, 1] 
-                ax.plot( wavelengths,column_1/cross_section,'r', label='scattering', marker='^', markersize=4, markevery=10)
+                column_1 = scattering_cross_sections[:, 1] /cross_section
+                ax.plot( wavelengths,column_1,'r', label='scattering', marker='^', markersize=4, markevery=10)
                 
-                column_2 = scattering_cross_sections[:, 2] 
-                ax.plot( wavelengths,column_2/cross_section,'g', label='absorption', marker='o', markersize=4, markevery=10)
+                column_2 = scattering_cross_sections[:, 2] /cross_section
+                ax.plot( wavelengths,column_2,'g', label='absorption', marker='o', markersize=4, markevery=10)
 
                 if(max_x<1000):
                     ax.set_xlim(280, max_x)
