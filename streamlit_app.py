@@ -389,7 +389,7 @@ if st.button("Run Calculate"):
                         K_TiN = K[i] #(W/m/K)
                         rho_TiN = rho[i]*1000 #kg/m^3
                         c_TiN = c[i]*1000 #J/kg/K
-                        st.write(K_TiN, rho_TiN, c_TiN)
+                        # st.write(K_TiN, rho_TiN, c_TiN)
                         break
             if material_core != material_shell:#-----------------case core shell partical----------#
                 for i in range(0, len(material), 1):
@@ -397,12 +397,13 @@ if st.button("Run Calculate"):
                         K_core = K[i] #(W/m/K)
                         rho_core = rho[i]*1000 #kg/m^3
                         c_core = c[i]*1000 #J/kg/K
-                        st.write(K_core, rho_core, c_core)
+                        # st.write(K_core, rho_core, c_core)
                     if(material[i]==material_shell):
                         K_shell = K[i] #(W/m/K)
                         rho_shell = rho[i]*1000 #kg/m^3
                         c_shell = c[i]*1000 #J/kg/K
-                        st.write(K_shell, rho_shell, c_shell)
+                        # st.write(K_shell, rho_shell, c_shell)
+                
                 K_TiN = ((D_core**2)/(D_core**2 + D_shell**2))*K_core + ((D_shell**2)/(D_core**2 + D_shell**2))*K_shell
                 rho_TiN = ((D_core**3)*rho_core + (D_shell**3 - D_core**3)*rho_shell)/(D_shell**3)
                 c_TiN = ((D_core**3)*rho_core*c_core + (D_shell**3 - D_core**3)*rho_shell*c_shell) / ((D_core**3)*rho_core + (D_shell**3 - D_core**3)*rho_shell)
@@ -433,8 +434,6 @@ if st.button("Run Calculate"):
                 K_d = K_PDMS*((K_TiN + (n-1)*K_PDMS + (n-1)*Phi*(K_TiN - K_PDMS))/(K_TiN + (n-1)*K_PDMS - Phi*(K_TiN - K_PDMS)))
                 #thermal diffusivity
                 kappa = K_d/(rho_d*c_d)
-
-                st.write(Phi, alpha, c_d, rho_d, K_d, kappa)
 
                 deltaT = []
                 time = []
