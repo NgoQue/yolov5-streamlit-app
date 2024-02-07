@@ -458,3 +458,5 @@ if st.button("Run Calculate"):
                 temperature (808, D_shell/2, N, I0)
             if np.isnan(D_shell) and not np.isnan(D_core):
                 temperature (808, D_core/2, N, I0)
+            if not np.isnan(D_shell) and not np.isnan(D_core):
+                temperature (808, D_shell/2, N, I0)
