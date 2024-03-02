@@ -52,8 +52,8 @@ if uploaded_file is not None:
         image.show(title='Brightened Image')
         image = image.save(f'images/{uploaded_file.name}')
 else:
-    st.sidebar.error("Please upload a file")
-
+    # st.sidebar.error("Please upload a file")
+    st.error("Please upload a file")
 number = st.sidebar.number_input('Enter the value of scale bar into the box below.',value  = 100, step = 10)
 # st.sidebar.write('The current number is ', number)
 
