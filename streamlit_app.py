@@ -210,7 +210,7 @@ if st.button("Run Calculate"):
                 plt.figure(dpi = 300)
                 st.write("Core diameter is:", D_core)
                 plt.figure(dpi=300)
-                plt.hist(diameter_core1, bins=10, color='y', alpha=0.7)
+                plt.hist(diameter_core1, bins=10, color='orange', alpha=0.7)
                 plt.ylabel('Frequency', fontsize=14)
                 plt.xlabel('Size', fontsize=14)
                 plt.title('Core diameter distribution', fontsize=14)
