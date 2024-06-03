@@ -365,6 +365,9 @@ if st.button("Run Calculate"):
                 plt.yticks(fontsize=14)
                 ax.legend(frameon=False, fontsize=14)
                 st.pyplot(plt, use_container_width=True)
+
+                eff_abs = scattering_cross_sections[:, 2]/scattering_cross_sections[:, 0]
+                st.write("\n\n - The average absorption efficiency is: **%.2f** %% " %( 100*efficiency(wavelengths, eff_abs)))
             with col2:
                 st.subheader("")
                 data = pd.DataFrame({'wl': np.linspace(min_x, max_x, 1000),
@@ -372,9 +375,6 @@ if st.button("Run Calculate"):
                      'qsca': scattering_cross_sections[:, 1],
                      'qabs': scattering_cross_sections[:, 2]})
                 st.dataframe(data, height=370, width=200)
-
-            eff_abs = scattering_cross_sections[:, 2]/scattering_cross_sections[:, 0]
-            st.write("\n\n - The average absorption efficiency is: **%.2f** %% " %( 100*efficiency(wavelengths, eff_abs)))
             #-----------------------------------------------Photothermal heat---------------------------------------------------------------------------#
             def func(t, I0, alpha, rho_d, c_d, K_d, kappa, r, z):
                 term1 = (I0*(1-R_reflectivity)*alpha)/(2*rho_d*c_d)
