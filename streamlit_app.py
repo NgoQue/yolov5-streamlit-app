@@ -228,7 +228,7 @@ if st.button("Run Calculate"):
             with col2:
                 st.subheader("    ")
                 data = pd.DataFrame(({"Diameter_core": diameter_core1[:]}))
-                st.dataframe(data, height=420, width=200)
+                st.dataframe(data, height=370, width=200)
         
         if not np.isnan(D_shell):
             with col1:
@@ -247,7 +247,7 @@ if st.button("Run Calculate"):
             with col2:
                 st.subheader("    ")
                 data = pd.DataFrame(({'Diameter_shell': diameter_shell1[:]}))
-                st.dataframe(data, height=420, width=200)
+                st.dataframe(data, height=370, width=200)
             # -----------------Xóa tệp hình ảnh tạm thời---------------------------
         time.sleep(3)
         shutil.rmtree('yolov5/runs/detect')
