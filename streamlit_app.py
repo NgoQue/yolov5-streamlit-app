@@ -175,7 +175,7 @@ def efficiency(abs_wl, abs):
     H = 0
     for i in range(0, len(abs_wl), 1):
         H += ((abs[i+1]+abs[i])/2) *(abs_wl[i+1] - abs_wl[i] )
-    H = H/2700
+    H = H/2720
     return H
  # ------------------------------# run detect.py in yolov5----------------------------------------
 # st.title('YOLOv5 Streamlit App')
