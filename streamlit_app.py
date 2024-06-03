@@ -173,7 +173,7 @@ def linear_interpolation(min_x, max_x, x_data, y_data, x_interpolate):
 def efficiency(abs_wl, abs):
     global H
     H = 0
-    for i in range(0, len(abs_wl), 1):
+    for i in range(0, len(abs_wl)-1, 1):
         H += ((abs[i+1]+abs[i])/2) *(abs_wl[i+1] - abs_wl[i] )
     H = H/2720
     return H
