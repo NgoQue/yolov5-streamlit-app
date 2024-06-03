@@ -169,6 +169,14 @@ def linear_interpolation(min_x, max_x, x_data, y_data, x_interpolate):
     coefficients = interpolate.interp1d(x_data, y_data, kind='cubic', fill_value='extrapolate')
     y_interpolate = coefficients(x_interpolate)# Tính giá trị nội suy
     return y_interpolate
+#--------------------------------------efficiency absorption---------------------------------
+def efficiency(abs_wl, abs):
+    global H
+    H = 0
+    for i in range(0, len(abs_wl), 1):
+        H += ((abs[i+1]+abs[i])/2) *(abs_wl[i+1] - abs_wl[i] )
+    H = H/2700
+    return H
  # ------------------------------# run detect.py in yolov5----------------------------------------
 # st.title('YOLOv5 Streamlit App')
 st.write('We estimate the size of single-particle materials or spherical core-shell materials from TEM images using the YOLOv5 model in computer vision, then calculate the spectrum absorption, scattering, extinction corresponding to the size of the material, and compute the photothermal heating of the material at 808-nm laser irradiation at specific concentrations. The structure of the materials is following:')
@@ -364,6 +372,9 @@ if st.button("Run Calculate"):
                      'qsca': scattering_cross_sections[:, 1],
                      'qabs': scattering_cross_sections[:, 2]})
                 st.dataframe(data, height=370, width=200)
+
+            eff_abs = scattering_cross_sections[:, 2]/scattering_cross_sections[:, 0]
+            st.write("\n\n - The average absorption efficiency is: **%.2f** %% " %( 100*efficiency(wavelengths, eff_abs)))
             #-----------------------------------------------Photothermal heat---------------------------------------------------------------------------#
             def func(t, I0, alpha, rho_d, c_d, K_d, kappa, r, z):
                 term1 = (I0*(1-R_reflectivity)*alpha)/(2*rho_d*c_d)
