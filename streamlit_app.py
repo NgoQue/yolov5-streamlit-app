@@ -143,7 +143,7 @@ def detect_diameter(namefile_txt, num_values):
                 diameter_core1 = diameter_core1 + [diameter_core[i]]
         D_core = np.mean(diameter_core1)
     else:
-        D_core = np.NaN
+        D_core = np.nan
 
     if (len(diameter_shell) > 0):
         for i in range(0, len(diameter_shell)):
@@ -155,15 +155,15 @@ def detect_diameter(namefile_txt, num_values):
                 diameter_shell1 = diameter_shell1 + [diameter_shell[i]]
         D_shell = np.mean(diameter_shell1)
     else:
-        D_shell = np.NaN      
+        D_shell = np.nan   
 
     if not np.isnan(D_core) and not np.isnan(D_shell) and len(diameter_shell1)>len(diameter_core1) :
         if ((len(diameter_core1)/len(diameter_shell1))<(0.4) ) or ((D_shell - D_core) < 0.05*num_values):
-            D_core = np.NaN
+            D_core = np.nan
             
     if not np.isnan(D_core) and not np.isnan(D_shell) and len(diameter_shell1)<len(diameter_core1) :
         if ((len(diameter_shell1)/len(diameter_core1))<(0.4) ) or ((D_shell - D_core) < 0.05*num_values):
-            D_shell = np.NaN
+            D_shell = np.nan
 #---------------------------interpolate dielectric function-----------------------------
 def linear_interpolation(min_x, max_x, x_data, y_data, x_interpolate):
     coefficients = interpolate.interp1d(x_data, y_data, kind='cubic', fill_value='extrapolate')
