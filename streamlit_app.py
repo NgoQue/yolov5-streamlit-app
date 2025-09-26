@@ -180,7 +180,7 @@ def efficiency(abs_wl, abs):
  # ------------------------------# run detect.py in yolov5----------------------------------------
 # st.title('YOLOv5 Streamlit App')
 st.write('We estimate the size of single-particle materials or spherical core-shell materials from TEM images using the YOLOv5 model in computer vision, then calculate the spectrum absorption, scattering, extinction corresponding to the size of the material, and compute the photothermal heating of the material at 808-nm laser irradiation at specific concentrations. The structure of the materials is following:')
-st.image("Data_dielectric_function/coreshell.jpg", use_column_width=True)
+st.image("Data_dielectric_function/coreshell.jpg", use_container_width=True)
 if st.button("Run Calculate"):
     int_image_path = f'images/{uploaded_file.name}'
     path_detect_py = 'yolov5/detect.py'
@@ -475,3 +475,4 @@ if st.button("Run Calculate"):
                 temperature (808, D_core/2, N, I0)
             if not np.isnan(D_shell) and not np.isnan(D_core):
                 temperature (808, D_shell/2, N, I0)
+
