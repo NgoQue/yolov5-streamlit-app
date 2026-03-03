@@ -1,8 +1,6 @@
-# Usage: pip install -r requirements.txt
-
 streamlit>=1.30
 
-# Base ------------------------------------------------------------------------
+# Base
 gitpython>=3.1.30
 matplotlib>=3.7
 numpy==1.26.4
@@ -16,20 +14,20 @@ tqdm>=4.66
 ultralytics>=8.0.147
 PyMieScatt>=1.8.1.1
 
-# Torch (compatible with Python 3.10)
+# Torch (stable for Python 3.10 cloud)
 torch==2.2.2
 torchvision==0.17.2
 
-# Logging ---------------------------------------------------------------------
+# Logging
 tensorboard>=2.14
 
-# Plotting --------------------------------------------------------------------
+# Plotting
 pandas>=2.0
 seaborn>=0.13
 
-# Deploy ----------------------------------------------------------------------
-setuptools>=70.0.0
+# Fix pkg_resources
+setuptools==70.0.0
 wheel
 
-# Extras ----------------------------------------------------------------------
+# Extras
 pycocotools>=2.0.6
