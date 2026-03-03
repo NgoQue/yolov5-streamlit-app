@@ -1,6 +1,5 @@
 streamlit>=1.30
 
-# Base
 gitpython>=3.1.30
 matplotlib>=3.7
 numpy==1.26.4
@@ -9,25 +8,20 @@ Pillow>=10.0
 psutil
 PyYAML>=6.0
 requests>=2.31
-scipy>=1.10
+scipy==1.10.1
 tqdm>=4.66
 ultralytics>=8.0.147
 PyMieScatt>=1.8.1.1
 
-# Torch (stable for Python 3.10 cloud)
 torch==2.2.2
 torchvision==0.17.2
 
-# Logging
 tensorboard>=2.14
-
-# Plotting
 pandas>=2.0
 seaborn>=0.13
 
-# Fix pkg_resources
 setuptools==70.0.0
 wheel
 
-# Extras
 pycocotools>=2.0.6
+
