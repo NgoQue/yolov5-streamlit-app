@@ -20,3 +20,4 @@ seaborn>=0.11.0
 setuptools>=70.0.0
 wheel
 pycocotools>=2.0.6
+ultralytics>=8.0.147
